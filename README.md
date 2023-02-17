@@ -8,7 +8,7 @@ To install photochem, create a dedicated `conda` environment and execute the com
 
 ```
 # Create conda environment
-conda create -n photochem -c conda-forge python=3.10 numpy scipy pyyaml scikit-build cython jupyter cantera matplotlib pathos threadpoolctl numba h5py
+conda create -n photochem -c conda-forge python=3.10 numpy scipy pyyaml scikit-build cython jupyter cantera matplotlib numba h5py
 
 # activate
 conda activate photochem
