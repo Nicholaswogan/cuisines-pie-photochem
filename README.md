@@ -4,7 +4,7 @@ This repository hosts code for the CUISINES Photochemical model Inter-comparison
 
 ## Installation
 
-To install photochem, create a dedicated `conda` environment. You will need a Fortran and C compiler.
+To install photochem, create a dedicated `conda` environment and execute the commands below. You will need a Fortran (`gfortran`) and C compiler ('clang' or GNU `gcc`).
 
 ```
 # Create conda environment
@@ -20,4 +20,12 @@ git checkout 6c241b213542b3cc28457ec038d457c0a2705927
 python -m pip install --no-deps --no-build-isolation . -v
 cd ..
 rm -rf photochem
+
+# clima
+git clone --recursive --branch=dev https://github.com/Nicholaswogan/clima
+cd clima
+git checkout 23df8fcf520dda22cb6c7afe080176ebcfcee401
+python -m pip install --no-deps --no-build-isolation . -v
+cd ..
+rm -rf clima
 ```
