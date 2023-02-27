@@ -24,7 +24,7 @@ rm -rf photochem
 # clima
 git clone --recursive --branch=dev https://github.com/Nicholaswogan/clima
 cd clima
-git checkout dd51fed4bdbf7d8080bed8d2231a79ba25ce59c7
+git checkout a038bfeab62b8597d67bc3eb9177c74841344029
 python -m pip install --no-deps --no-build-isolation . -v
 cd ..
 rm -rf clima
