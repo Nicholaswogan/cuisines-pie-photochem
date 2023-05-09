@@ -8,15 +8,15 @@ To install photochem, create a dedicated `conda` environment and execute the com
 
 ```
 # Create conda environment
-conda create -n photochem -c conda-forge python=3.10 numpy scipy pyyaml scikit-build cython jupyter cantera matplotlib numba h5py
+conda create -n pie -c conda-forge python=3.10 numpy scipy pyyaml scikit-build cython jupyter cantera matplotlib numba h5py ninja
 
 # activate
-conda activate photochem
+conda activate pie
 
 # photochem
 git clone --recursive --branch=dev https://github.com/Nicholaswogan/photochem
 cd photochem
-git checkout 6c241b213542b3cc28457ec038d457c0a2705927
+git checkout 03623d29519079927c250763c73b6d8c02b0bec1
 python -m pip install --no-deps --no-build-isolation . -v
 cd ..
 rm -rf photochem
@@ -24,7 +24,7 @@ rm -rf photochem
 # clima
 git clone --recursive --branch=dev https://github.com/Nicholaswogan/clima
 cd clima
-git checkout a038bfeab62b8597d67bc3eb9177c74841344029
+git checkout c2abeefd048973008c6fd6962a21371b41a7a74b
 python -m pip install --no-deps --no-build-isolation . -v
 cd ..
 rm -rf clima

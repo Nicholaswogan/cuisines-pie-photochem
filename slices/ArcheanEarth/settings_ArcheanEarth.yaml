@@ -1,4 +1,3 @@
-description: Settings for the photochemical model.
 
 atmosphere-grid:
   bottom: 0.0 # cm
