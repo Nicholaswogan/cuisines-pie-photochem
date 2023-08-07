@@ -2,7 +2,7 @@
 atmosphere-grid:
   bottom: 0.0 # cm
   top: 1.0e7 # cm
-  number-of-layers: 200
+  number-of-layers: 100
 
 photolysis-grid:
   regular-grid: true
@@ -16,16 +16,15 @@ planet:
   planet-mass: 5.972e27 # g
   planet-radius: 6.371e8 # cm
   surface-albedo: 0.25 # cm
-  diurnal-averaging-factor: 0.5
   solar-zenith-angle: 60.0
   hydrogen-escape:
     type: diffusion limited
   water:
     fix-water-in-troposphere: true
-    relative-humidity: 0.7
+    relative-humidity: 1.0
     gas-rainout: true
     rainfall-rate: 1
-    tropopause-altitude: 1.192338e6 # cm
+    tropopause-altitude: 1105565.2686376572 # cm
     water-condensation: true
     condensation-rate: {A: 1.0e-5, rhc: 0.01, rh0: 0.015}
 
@@ -54,26 +53,20 @@ particles:
 boundary-conditions:
 - name: CO2
   # From Krissansen-Totton et al. (2018), PNAS, Fig. 3
-  # for CO2 at 2.7 Ga
-  lower-boundary: {type: mix, mix: 1.0e-2}
-  upper-boundary: {type: veff, veff: 0.0}
-- name: CH4
-  lower-boundary: {type: mix, mix: 1.0e-3}
+  # for CO2 at 4.0 Ga
+  lower-boundary: {type: mix, mix: 0.3}
   upper-boundary: {type: veff, veff: 0.0}
 - name: CO
-  # Maximum CO deposition into the ocean assuming an
-  # efficient CO consuming metabolism (Kharecha et al. 2004). The flux
-  # is from Archean+haze template in the VPL Atmos code.
-  lower-boundary: {type: vdep + dist flux, vdep: 1.2e-4, flux: 1.0e9, height: 10.0}
+  # vdep from (Kharecha et al. 2004) for CO hydrolysis in ocean.
+  # The flux is from Archean+haze template in the VPL Atmos code.
+  lower-boundary: {type: vdep + dist flux, vdep: 1.0e-8, flux: 1.0e9, height: 10.0}
   upper-boundary: {type: veff, veff: 0.0}
 - name: H2
-  # Maximum H2 deposition into the ocean assuming an
-  # efficient H2 consuming metabolism (Kharecha et al. 2004). The flux
-  # is from Archean+haze template in the VPL Atmos code.
-  lower-boundary: {type: vdep + dist flux, vdep: 2.4e-4, flux: 1.0e10, height: 10.0}
+  # From Archean+haze template in the VPL Atmos code.
+  lower-boundary: {type: flux, flux: 1.0e10}
   upper-boundary: {type: veff, veff: 0.0}
 - name: HCN
-  # Emulates HCN hydrolysis in the ocean
+  # Emulates HCN hydrolysis in the ocean (Wogan et al. 2023)
   lower-boundary: {type: vdep, vdep: 0.007}
   upper-boundary: {type: veff, veff: 0.0}
 - name: HCCCN
@@ -89,8 +82,7 @@ boundary-conditions:
 - name: 1CH2
   type: short lived
 
-# Boundary conditions copied from the Atmos Archean+haze
-# template
+# Boundary conditions copied from the Atmos Archean+haze template
 - name: O
   lower-boundary: {type: vdep, vdep: 1.0}
   upper-boundary: {type: flux, flux: 0.0}

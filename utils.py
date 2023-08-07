@@ -7,6 +7,7 @@ class PhotochemClima():
         self.c = c
         self.T_guess = T_guess
         self.verbose = True
+        self.trop_alt = -1.0
         
     def iteration(self):
         
@@ -26,9 +27,9 @@ class PhotochemClima():
         # Interpolate to photochem
         T = np.interp(self.pc.var.z, self.c.z, self.c.T)
         ind = np.where(self.c.T == self.c.T_trop)[0][0]
-        trop_alt = self.c.z[ind]
+        self.trop_alt = self.c.z[ind]
         usol = self.pc.wrk.usol.copy()
-        self.pc.set_temperature(T, trop_alt=trop_alt)
+        self.pc.set_temperature(T, trop_alt=self.trop_alt)
         
         # Run photochemical model
         self.pc.initialize_stepper(usol)
