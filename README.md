@@ -5,5 +5,5 @@ This repository hosts code for the CUISINES Photochemical model Inter-comparison
 ## Installation
 
 ```
-conda install -c conda-forge photochem=0.4.3 matplotlib jupyter
+conda install -c conda-forge photochem=0.4.2 matplotlib jupyter
 ```
