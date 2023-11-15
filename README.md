@@ -5,7 +5,7 @@ This repository hosts code for the CUISINES Photochemical model Inter-comparison
 ## Installation
 
 ```
-conda create -n pie -c conda-forge photochem=0.4.2 matplotlib jupyter
+conda create -n pie -c conda-forge photochem=0.4.4 matplotlib jupyter
 ```
 
 ## Units of photochem output files
