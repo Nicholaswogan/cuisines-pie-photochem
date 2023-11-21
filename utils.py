@@ -1,5 +1,29 @@
 import numpy as np
 
+def pie_output_file(pc, outfile):
+    
+    fmt = '{:16}'
+    with open(outfile,'w') as f:
+        f.write(fmt.format('Altitude(km)'))
+        f.write(fmt.format('Pressure(bar)'))
+        f.write(fmt.format('Temperature(K)'))
+        f.write(fmt.format('Eddy(/cm2/s)'))
+        for sp in pc.dat.species_names[pc.dat.np:-2]:
+            f.write(fmt.format(sp))
+        f.write('\n')
+
+        for i in range(pc.var.z.shape[0]):
+            f.write(fmt.format('%.4e'%(pc.var.z[i]/1e5)))
+            f.write(fmt.format('%.4e'%(pc.wrk.pressure[i]/1e6)))
+            f.write(fmt.format('%.4e'%(pc.var.temperature[i])))
+            f.write(fmt.format('%.4e'%(pc.var.edd[i])))
+            for sp in pc.dat.species_names[pc.dat.np:-2]:
+                ind = pc.dat.species_names.index(sp)
+                tmp = pc.wrk.densities[ind,i]/pc.wrk.density[i]
+                f.write(fmt.format('%.4e'%(tmp)))
+            f.write('\n')
+
+
 class PhotochemClima():
     
     def __init__(self, pc, c, T_guess = 300):
