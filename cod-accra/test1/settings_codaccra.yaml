@@ -1,0 +1,16 @@
+
+planet:
+  planet-mass: 5.972e27
+  planet-radius: 6.371e8
+  photon-scale-factor: 0.98771561409974729
+
+optical-properties:
+  species: {gases: [N2, CO2, H2O]}
+  ir:
+    k-method: RandomOverlapResortRebin
+    number-of-bins: 32
+    opacities: {k-distributions: on, CIA: on, rayleigh: on}
+  solar:
+    k-method: RandomOverlapResortRebin
+    number-of-bins: 32
+    opacities: {k-distributions: on, CIA: on, rayleigh: on}
