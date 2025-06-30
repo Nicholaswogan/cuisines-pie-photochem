@@ -180,90 +180,170 @@ def test2(savefile=False, use_atmosphere_file=True):
         pc.out2atmosphere_txt('slices/ArcheanEarth/test2/atmosphere.txt', overwrite=True)
         utils.pie_output_file(pc,'slices/ArcheanEarth/test2/Photochem_test2.txt')
 
-# def test3a(savefile=False):
-#     print('\nRunning test3a')
-#     pc = Atmosphere("reactions/zahnle_earth.yaml",\
-#                 "./slices/ArcheanEarth/test3/test3a/settings_ArcheanEarth_test3a.yaml",\
-#                 "./slices/ArcheanEarth/test2/Sun_3.8Ga_energyunits_edited.txt",\
-#                 "./slices/ArcheanEarth/test3/test3a/atmosphere_ArcheanEarth_test3a.txt")
-    
-#     pc.initialize_stepper(pc.wrk.usol)
-#     tn = 0.0
-#     while tn < pc.var.equilibrium_time:
-#         tn = pc.step()
+def test3_initialize(pc):
+    z1, P1, T1, Kzz1 = np.loadtxt('slices/ArcheanEarth/test3/ZPTEDD_Kasting1990_1km.txt',skiprows=1).T
+    z1 *= 1e5
+    z = np.linspace(0,100e5,201)
+    T = np.interp(z, z1, T1)
+    P_surf = P1[0]*1e6
 
-#     if savefile:
-#         utils.pie_output_file(pc,'slices/ArcheanEarth/test3/test3a/ArcheanEarth_test3a.txt')
+    mix = {
+        'N2': np.ones(len(z))*0.8,
+        'CO2': np.ones(len(z))*0.2,
+    }
 
-# def test3b(savefile=False):
-#     print('\nRunning test3b')
-#     pc = Atmosphere("reactions/zahnle_earth.yaml",\
-#                 "./slices/ArcheanEarth/test3/test3b/settings_ArcheanEarth_test3b.yaml",\
-#                 "./slices/ArcheanEarth/test2/Sun_3.8Ga_energyunits_edited.txt",\
-#                 "./slices/ArcheanEarth/test3/test3b/atmosphere_ArcheanEarth_test3b.txt")
-    
-#     pc.initialize_stepper(pc.wrk.usol)
-#     tn = 0.0
-#     while tn < pc.var.equilibrium_time:
-#         tn = pc.step()
+    Kzz = 10.0**np.interp(z, z1, np.log10(Kzz1))
 
-#     if savefile:
-#         utils.pie_output_file(pc,'slices/ArcheanEarth/test3/test3b/ArcheanEarth_test3b.txt')
+    pc.initialize_to_zT(z, T, Kzz, mix, P_surf)
 
-# def test3c(savefile=False):
-#     print('\nRunning test3c')
-#     pc = Atmosphere("reactions/zahnle_earth.yaml",\
-#                 "./slices/ArcheanEarth/test3/test3c/settings_ArcheanEarth_test3c.yaml",\
-#                 "./slices/ArcheanEarth/test2/Sun_3.8Ga_energyunits_edited.txt",\
-#                 "./slices/ArcheanEarth/test3/test3c/atmosphere_ArcheanEarth_test3c.txt")
-    
-#     # Turn off molecular diffusion for all species but H2 and H
-#     @nb.cfunc(nb.double(nb.double, nb.double, nb.double))
-#     def custom_binary_diffusion_fcn(mu_i, mubar, T):
-#         if mu_i < 2.01595:
-#             b = 1.52e18*((1.0/mu_i+1.0/mubar)**0.5)*(T**0.5)
-#         else:
-#             b = 0.0    
-#         return b
-#     pc.var.custom_binary_diffusion_fcn = custom_binary_diffusion_fcn
-    
-#     pc.initialize_stepper(pc.wrk.usol)
-#     tn = 0.0
-#     while tn < pc.var.equilibrium_time:
-#         tn = pc.step()
+    radii = {a: 1e-4 for a in pc.dat.species_names[:pc.dat.np]}
+    radii['H2Oaer'] = 1e-3
+    radii['HCaer1'] = 0.5e-4
+    radii['HCaer2'] = 0.5e-4
+    radii['HCaer3'] = 0.5e-4
+    pc.set_particle_radii(radii)
 
-#     if savefile:
-#         utils.pie_output_file(pc,'slices/ArcheanEarth/test3/test3c/ArcheanEarth_test3c.txt')
+def test3a(savefile=False, use_atmosphere_file=True):
 
-# def test3d(savefile=False):
-#     print('\nRunning test3d')
-#     pc = Atmosphere("reactions/zahnle_earth.yaml",\
-#                 "./slices/ArcheanEarth/test3/test3d/settings_ArcheanEarth_test3d.yaml",\
-#                 "./slices/ArcheanEarth/test2/Sun_3.8Ga_energyunits_edited.txt",\
-#                 "./slices/ArcheanEarth/test3/test3d/atmosphere_ArcheanEarth_test3d.txt")
-    
-#     @nb.cfunc(nb.double(nb.double, nb.double, nb.double))
-#     def custom_binary_diffusion_fcn(mu_i, mubar, T):
-#         b = 1.52e18*((1.0/mu_i+1.0/mubar)**0.5)*(T**0.5)
-#         return b
-#     pc.var.custom_binary_diffusion_fcn = custom_binary_diffusion_fcn
-    
-#     pc.initialize_stepper(pc.wrk.usol)
-#     tn = 0.0
-#     while tn < pc.var.equilibrium_time:
-#         tn = pc.step()
+    atmosphere_file = None
+    if use_atmosphere_file:
+        atmosphere_file = 'slices/ArcheanEarth/test3/test3a/atmosphere.txt'
 
-#     if savefile:
-#         utils.pie_output_file(pc,'slices/ArcheanEarth/test3/test3d/ArcheanEarth_test3d.txt')
+    pc = utils.EvoAtmosphereRobust(
+        'slices/zahnle_earth_HNOC.yaml',
+        'slices/ArcheanEarth/test3/settings.yaml',
+        'slices/ArcheanEarth/test2/Sun_3.8Ga_energyunits_edited.txt',
+        atmosphere_file
+    )
+    pc.set_particle_parameters(1, 1000, 10)
+
+    if atmosphere_file is None:
+        test3_initialize(pc)
+
+    assert pc.find_steady_state()
+
+    if savefile:
+        pc.out2atmosphere_txt('slices/ArcheanEarth/test3/test3a/atmosphere.txt', overwrite=True)
+        utils.pie_output_file(pc,'slices/ArcheanEarth/test3/test3a/Photochem_test3a.txt')
+
+def test3b(savefile=False, use_atmosphere_file=True):
+
+    atmosphere_file = None
+    if use_atmosphere_file:
+        atmosphere_file = 'slices/ArcheanEarth/test3/test3b/atmosphere.txt'
+
+    pc = utils.EvoAtmosphereRobust(
+        'slices/zahnle_earth_HNOC.yaml',
+        'slices/ArcheanEarth/test3/settings.yaml',
+        'slices/ArcheanEarth/test2/Sun_3.8Ga_energyunits_edited.txt',
+        atmosphere_file
+    )
+    pc.set_particle_parameters(1, 1000, 10)
+
+    if atmosphere_file is None:
+        test3_initialize(pc)
+    pc.var.edd = np.ones(pc.var.nz)*1e5 # change Kzz
+
+    assert pc.find_steady_state()
+
+    if savefile:
+        pc.out2atmosphere_txt('slices/ArcheanEarth/test3/test3b/atmosphere.txt', overwrite=True)
+        utils.pie_output_file(pc,'slices/ArcheanEarth/test3/test3b/Photochem_test3b.txt')
+
+def test3c(savefile=False, use_atmosphere_file=True):
+
+    atmosphere_file = None
+    if use_atmosphere_file:
+        atmosphere_file = 'slices/ArcheanEarth/test3/test3c/atmosphere.txt'
+
+    pc = utils.EvoAtmosphereRobust(
+        'slices/zahnle_earth_HNOC.yaml',
+        'slices/ArcheanEarth/test3/settings.yaml',
+        'slices/ArcheanEarth/test2/Sun_3.8Ga_energyunits_edited.txt',
+        atmosphere_file
+    )
+    pc.set_particle_parameters(1, 1000, 10)
+
+    if atmosphere_file is None:
+        test3_initialize(pc)
+
+    # Turn off molecular diffusion for all species but H2 and H
+    @nb.cfunc(nb.double(nb.double, nb.double, nb.double))
+    def custom_binary_diffusion_fcn(mu_i, mubar, T):
+        if mu_i < 2.01595:
+            b = 1.52e18*((1.0/mu_i+1.0/mubar)**0.5)*(T**0.5)
+        else:
+            b = 0.0    
+        return b
+    pc.var.custom_binary_diffusion_fcn = custom_binary_diffusion_fcn
+
+    assert pc.find_steady_state()
+
+    if savefile:
+        pc.out2atmosphere_txt('slices/ArcheanEarth/test3/test3c/atmosphere.txt', overwrite=True)
+        utils.pie_output_file(pc,'slices/ArcheanEarth/test3/test3c/Photochem_test3c.txt')
+
+def test3d(savefile=False, use_atmosphere_file=True):
+
+    atmosphere_file = None
+    if use_atmosphere_file:
+        atmosphere_file = 'slices/ArcheanEarth/test3/test3d/atmosphere.txt'
+
+    pc = utils.EvoAtmosphereRobust(
+        'slices/zahnle_earth_HNOC.yaml',
+        'slices/ArcheanEarth/test3/settings.yaml',
+        'slices/ArcheanEarth/test2/Sun_3.8Ga_energyunits_edited.txt',
+        atmosphere_file
+    )
+    pc.set_particle_parameters(1, 1000, 10)
+
+    if atmosphere_file is None:
+        test3_initialize(pc)
+
+    @nb.cfunc(nb.double(nb.double, nb.double, nb.double))
+    def custom_binary_diffusion_fcn(mu_i, mubar, T):
+        b = 1.52e18*((1.0/mu_i+1.0/mubar)**0.5)*(T**0.5)
+        return b
+    pc.var.custom_binary_diffusion_fcn = custom_binary_diffusion_fcn
+
+    assert pc.find_steady_state()
+
+    if savefile:
+        pc.out2atmosphere_txt('slices/ArcheanEarth/test3/test3d/atmosphere.txt', overwrite=True)
+        utils.pie_output_file(pc,'slices/ArcheanEarth/test3/test3d/Photochem_test3d.txt')
+
+def test3e(savefile=False, use_atmosphere_file=True):
+
+    atmosphere_file = None
+    if use_atmosphere_file:
+        atmosphere_file = 'slices/ArcheanEarth/test3/test3e/atmosphere.txt'
+
+    pc = utils.EvoAtmosphereRobust(
+        'slices/zahnle_earth_HNOC.yaml',
+        'slices/ArcheanEarth/test3/settings_3e.yaml',
+        'slices/ArcheanEarth/test2/Sun_3.8Ga_energyunits_edited.txt',
+        atmosphere_file
+    )
+    pc.set_particle_parameters(1, 1000, 10)
+
+    if atmosphere_file is None:
+        test3_initialize(pc)
+
+    assert pc.find_steady_state()
+
+    if savefile:
+        pc.out2atmosphere_txt('slices/ArcheanEarth/test3/test3e/atmosphere.txt', overwrite=True)
+        utils.pie_output_file(pc,'slices/ArcheanEarth/test3/test3e/Photochem_test3e.txt')
 
 if __name__ == "__main__":
-    savefile = True
-    # test0(savefile=savefile, use_atmosphere_file=True)
-    # test1a(savefile=savefile, use_atmosphere_file=True)
-    # test1d_180K(savefile=savefile, use_atmosphere_file=False)
-    # test1d_288K(savefile=savefile, use_atmosphere_file=False)
-    test2(savefile=savefile, use_atmosphere_file=False)
-    # test3a(savefile=savefile)
-    # test3b(savefile=savefile)
-    # test3c(savefile=savefile)
-    # test3d(savefile=savefile)
+    savefile = False
+    use_atmosphere_file = True
+    test1a(savefile, use_atmosphere_file)
+    test1d_180K(savefile, use_atmosphere_file)
+    test1d_288K(savefile, use_atmosphere_file)
+    test2(savefile, use_atmosphere_file)
+    test3a(savefile, use_atmosphere_file)
+    test3b(savefile, use_atmosphere_file)
+    test3c(savefile, use_atmosphere_file)
+    test3d(savefile, use_atmosphere_file)
+    test3e(savefile, use_atmosphere_file)
