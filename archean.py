@@ -99,7 +99,7 @@ def test1a(savefile=False, use_atmosphere_file=True):
         atmosphere_file = 'slices/ArcheanEarth/test1/test1a/atmosphere.txt'
 
     pc = utils.EvoAtmosphereRobust(
-        'slices/zahnle_earth_HNOCS.yaml',
+        'slices/zahnle_earth_HNOC.yaml',
         'slices/ArcheanEarth/test1/test1a/settings.yaml',
         'slices/ArcheanEarth/Sun_3.8Ga.txt',
         atmosphere_file
@@ -115,20 +115,45 @@ def test1a(savefile=False, use_atmosphere_file=True):
         pc.out2atmosphere_txt('slices/ArcheanEarth/test1/test1a/atmosphere.txt', overwrite=True)
         utils.pie_output_file(pc,'slices/ArcheanEarth/test1/test1a/Photochem_test1a.txt')
 
-# def test1d_180K(savefile=False):
-#     print('\nRunning test1d_180K')
-#     pc = Atmosphere("reactions/zahnle_earth.yaml",\
-#                 "./slices/ArcheanEarth/test1/test1d/settings_ArcheanEarth_test1d_180K.yaml",\
-#                 "./slices/ArcheanEarth/Sun_4.0Ga.txt",\
-#                 "./slices/ArcheanEarth/test1/test1d/atmosphere_ArcheanEarth_test1d_180K.txt")
-    
-#     pc.initialize_stepper(pc.wrk.usol)
-#     tn = 0.0
-#     while tn < pc.var.equilibrium_time:
-#         tn = pc.step()
+def test1d_180K(savefile=False, use_atmosphere_file=True):
+    atmosphere_file = 'slices/ArcheanEarth/test1/test1a/atmosphere.txt'
+    if use_atmosphere_file:
+        atmosphere_file = 'slices/ArcheanEarth/test1/test1d/atmosphere_180K.txt'
 
-#     if savefile:
-#         utils.pie_output_file(pc,'slices/ArcheanEarth/test1/test1d/ArcheanEarth_test1d_180K.txt')
+    pc = utils.EvoAtmosphereRobust(
+        'slices/zahnle_earth_HNOC.yaml',
+        'slices/ArcheanEarth/test1/test1a/settings.yaml',
+        'slices/ArcheanEarth/Sun_3.8Ga.txt',
+        atmosphere_file
+    )
+    pc.set_particle_parameters(1, 1000, 10)
+
+    # Temperature
+    pc.set_temperature(np.ones(pc.var.nz)*180)
+
+    assert pc.find_steady_state()
+
+    if savefile:
+        pc.out2atmosphere_txt('slices/ArcheanEarth/test1/test1d/atmosphere_180K.txt', overwrite=True)
+        utils.pie_output_file(pc,'slices/ArcheanEarth/test1/test1d/Photochem_test1d_180K.txt')
+
+def test1d_288K(savefile=False, use_atmosphere_file=True):
+    atmosphere_file = 'slices/ArcheanEarth/test1/test1d/atmosphere_288K.txt'
+
+    pc = utils.EvoAtmosphereRobust(
+        'slices/zahnle_earth_HNOC.yaml',
+        'slices/ArcheanEarth/test1/test1a/settings.yaml',
+        'slices/ArcheanEarth/Sun_3.8Ga.txt',
+        atmosphere_file
+    )
+    pc.set_particle_parameters(1, 1000, 10)
+    pc.var.atol = 1e-13
+
+    assert pc.find_steady_state()
+
+    if savefile:
+        pc.out2atmosphere_txt('slices/ArcheanEarth/test1/test1d/atmosphere_288K.txt', overwrite=True)
+        utils.pie_output_file(pc,'slices/ArcheanEarth/test1/test1d/Photochem_test1d_288K.txt')
 
 # def test1d_288K(savefile=False):
 #     print('\nRunning test1d_288K')
@@ -240,8 +265,8 @@ if __name__ == "__main__":
     savefile = True
     # test0(savefile=savefile, use_atmosphere_file=True)
     test1a(savefile=savefile, use_atmosphere_file=True)
-    # test1d_180K(savefile=savefile)
-    # test1d_288K(savefile=savefile)
+    # test1d_180K(savefile=savefile, use_atmosphere_file=False)
+    # test1d_288K(savefile=savefile, use_atmosphere_file=False)
     # test2(savefile=savefile)
     # test3a(savefile=savefile)
     # test3b(savefile=savefile)
