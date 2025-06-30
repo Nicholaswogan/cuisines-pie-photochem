@@ -64,7 +64,7 @@ def test0(savefile=False, use_atmosphere_file=True):
 
     if savefile:
         pc.out2atmosphere_txt('slices/ArcheanEarth/test0/atmosphere.txt', overwrite=True)
-        utils.pie_output_file(pc,'slices/ArcheanEarth/test0/Photochem_ArcheanEarth_test0.txt')
+        utils.pie_output_file(pc,'slices/ArcheanEarth/test0/Photochem_test0.txt')
 
 # def test1a(savefile=False):
 #     print('\nRunning test1a')
