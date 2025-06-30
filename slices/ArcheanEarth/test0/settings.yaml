@@ -4,62 +4,39 @@ atmosphere-grid:
   top: 1.0e7 # cm
   number-of-layers: 100
 
-photolysis-grid:
-  regular-grid: true
-  lower-wavelength: 92.5 # nm
-  upper-wavelength: 855.0 # nm
-  number-of-bins: 200
-
 planet:
-  background-gas: N2
-  surface-pressure: 1.0 # bar
   planet-mass: 5.972e27 # g
   planet-radius: 6.371e8 # cm
-  surface-albedo: 0.25 # cm
+  surface-albedo: 0.2 # cm
   solar-zenith-angle: 60.0
   hydrogen-escape:
     type: diffusion limited
   water:
-    fix-water-in-troposphere: true
-    relative-humidity: 1.0
+    fix-water-in-troposphere: false 
     gas-rainout: true
     rainfall-rate: 1
-    tropopause-altitude: 1105565.2686376572 # cm
-    water-condensation: true
-    condensation-rate: {A: 1.0e-5, rhc: 0.01, rh0: 0.015}
+    tropopause-altitude: 1.1e6
+    water-condensation: false
 
 particles:
-- name: H2SO4aer
-  condensation-rate: {A: 1.0e-5, rhc: 1.0, rh0: 1.05}
-- name: HCNaer
-  condensation-rate: {A: 1.0e-8, rhc: 1.0, rh0: 1.05}
-- name: HCCCNaer
-  condensation-rate: {A: 1.0e-8, rhc: 1.0, rh0: 1.05}
-- name: CH3CNaer
-  condensation-rate: {A: 1.0e-8, rhc: 1.0, rh0: 1.05}
-- name: C2H2aer
-  condensation-rate: {A: 1.0e-8, rhc: 1.0, rh0: 1.05}
-- name: C2H4aer
-  condensation-rate: {A: 1.0e-8, rhc: 1.0, rh0: 1.05}
-- name: C2H6aer
-  condensation-rate: {A: 1.0e-8, rhc: 1.0, rh0: 1.05}
-- name: C4H4aer
-  condensation-rate: {A: 1.0e-8, rhc: 1.0, rh0: 1.05}
-- name: N2Oaer
-  condensation-rate: {A: 1.0e-8, rhc: 1.0, rh0: 1.05}
-- name: NH3aer
-  condensation-rate: {A: 1.0e-8, rhc: 1.0, rh0: 1.05}  
-  
+- {name: H2Oaer, RH-condensation: 0.5}  
+
 boundary-conditions:
+- name: H2O
+  lower-boundary: {type: press, press: 270e6}
+  upper-boundary: {type: veff, veff: 0.0}
+- name: N2
+  lower-boundary: {type: press, press: 0.7e6}
+  upper-boundary: {type: veff, veff: 0.0}
 - name: CO2
   # From Krissansen-Totton et al. (2018), PNAS, Fig. 3
-  # for CO2 at 4.0 Ga
-  lower-boundary: {type: mix, mix: 0.3}
+  # for CO2 at 3.8 Ga
+  lower-boundary: {type: press, press: 0.3e6}
   upper-boundary: {type: veff, veff: 0.0}
 - name: CO
   # vdep from (Kharecha et al. 2004) for CO hydrolysis in ocean.
   # The flux is from Archean+haze template in the VPL Atmos code.
-  lower-boundary: {type: vdep + dist flux, vdep: 1.0e-8, flux: 1.0e9, height: 10.0}
+  lower-boundary: {type: vdep + dist flux, vdep: 1.0e-8, flux: 1.0e9, height: -1.0}
   upper-boundary: {type: veff, veff: 0.0}
 - name: H2
   # From Archean+haze template in the VPL Atmos code.
@@ -73,14 +50,6 @@ boundary-conditions:
   # Assumed to be the same as HCN
   lower-boundary: {type: vdep, vdep: 0.007}
   upper-boundary: {type: veff, veff: 0.0}
-
-# Short-lived species
-- name: O1D
-  type: short lived
-- name: N2D
-  type: short lived
-- name: 1CH2
-  type: short lived
 
 # Boundary conditions copied from the Atmos Archean+haze template
 - name: O
@@ -123,7 +92,7 @@ boundary-conditions:
   lower-boundary: {type: vdep, vdep: 0.2}
   upper-boundary: {type: veff, veff: 0.0}
 - name: H2S
-  lower-boundary: {type: vdep + dist flux, vdep: 0.02, flux: 350000000.0, height: 10.0}
+  lower-boundary: {type: vdep + dist flux, vdep: 0.02, flux: 350000000.0, height: -1.0}
   upper-boundary: {type: veff, veff: 0.0}
 - name: HSO
   lower-boundary: {type: vdep, vdep: 1.0}
@@ -132,6 +101,6 @@ boundary-conditions:
   lower-boundary: {type: vdep, vdep: 1.0}
   upper-boundary: {type: veff, veff: 0.0}
 - name: SO2
-  lower-boundary: {type: vdep + dist flux, vdep: 1.0, flux: 3500000000.0, height: 10.0}
+  lower-boundary: {type: vdep + dist flux, vdep: 1.0, flux: 3500000000.0, height: -1.0}
   upper-boundary: {type: veff, veff: 0.0}
 
