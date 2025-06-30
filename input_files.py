@@ -8,6 +8,11 @@ def reaction_mechanisms():
         'slices/zahnle_earth_HNOCS.yaml',
         ['H','O','N','C','S']
     )
+    resave_mechanism_with_atoms(
+        zahnle_earth,
+        'slices/zahnle_earth_HNOC.yaml',
+        ['H','O','N','C']
+    )
 
 def create_stellar_fluxes():
     _ = stars.solar_spectrum(

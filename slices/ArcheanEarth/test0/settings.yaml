@@ -7,12 +7,12 @@ atmosphere-grid:
 planet:
   planet-mass: 5.972e27 # g
   planet-radius: 6.371e8 # cm
-  surface-albedo: 0.2 # cm
+  surface-albedo: 0.2
   solar-zenith-angle: 60.0
   hydrogen-escape:
     type: diffusion limited
   water:
-    fix-water-in-troposphere: false 
+    fix-water-in-troposphere: false
     gas-rainout: true
     rainfall-rate: 1
     tropopause-altitude: 1.1e6
