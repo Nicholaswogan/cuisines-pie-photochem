@@ -4,6 +4,8 @@ import utils
 import numba as nb
 import os
 import shutil
+from photochem.utils._convert_utils import compare2reactions
+from photochem.utils._format import yaml, Loader
 
 def test0_initialize(pc):
     "Initializes photochemical model to reasonable z-T-Kzz profile."
@@ -355,6 +357,60 @@ def test4a(savefile=False, use_atmosphere_file=True):
     if savefile:
         pc.out2atmosphere_txt('slices/ArcheanEarth/test4/test4a/atmosphere.txt', overwrite=True)
         utils.pie_output_file(pc,'slices/ArcheanEarth/test4/test4a/Photochem_test4a.txt')
+        save_photolysis_rates(pc)
+
+def save_photolysis_rates(pc):
+
+    with open('slices/ArcheanEarth/test4/original_files/ArcheanHaze.yaml','r') as f:
+        dat = yaml.load(f,Loader)
+
+    def convert_sp_names(sp):
+        if sp == 'CH23':
+            sp = 'CH2'
+        return sp
+
+    for i in range(len(dat['species'])):
+        dat['species'][i]['name'] = convert_sp_names(dat['species'][i]['name'])
+
+    for i in range(len(dat['reactions'])):
+        eq = dat['reactions'][i]['equation']
+        react = [a.strip() for a in eq.split('=>')[0].split('+')]
+        prod = [a.strip() for a in eq.split('=>')[1].split('+')]
+        react = [convert_sp_names(a) for a in react]
+        prod = [convert_sp_names(a) for a in prod]
+        eq1 = ' + '.join(react) + ' => ' + ' + '.join(prod)
+        dat['reactions'][i]['equation'] = eq1
+
+    photolysis = []
+    for rx in dat['reactions']:
+        if rx['type'] == 'photolysis':
+            photolysis.append(rx)
+
+    rates = []
+    for rx1 in photolysis:
+        eq = rx1['equation']
+
+        rate = np.ones(pc.var.nz)*np.nan
+        for i,rx in enumerate(pc.dat.reaction_equations):
+            if compare2reactions(rx, eq):
+                rate = pc.wrk.rx_rates[:,i]
+                break
+        rates.append(rate)
+
+    with open('slices/ArcheanEarth/test4/original_files/out.freq','r') as f:
+        lines = f.readlines()
+    labels = [a.strip() for a in lines[0].split()]
+
+    fmt = '{:11}'
+    with open('slices/ArcheanEarth/test4/test4a/Photochem_test4a_out.freq','w') as f:
+        for a in labels:
+            f.write(fmt.format(a))
+        f.write('\n')
+        for j in range(pc.var.nz):
+            f.write(fmt.format('%.2E'%pc.var.z[j]))
+            for i in range(len(rates)):
+                f.write(fmt.format('%.2E'%rates[i][j]))
+            f.write('\n')
 
 def find_files_with_string_in_name(root_dir, search_string):
     found_files = []
@@ -382,7 +438,7 @@ if __name__ == "__main__":
     # test3c(savefile, use_atmosphere_file)
     # test3d(savefile, use_atmosphere_file)
     # test3e(savefile, use_atmosphere_file)
-    # test4a(savefile, use_atmosphere_file)
+    test4a(savefile, use_atmosphere_file)
 
     collect_results()
 
