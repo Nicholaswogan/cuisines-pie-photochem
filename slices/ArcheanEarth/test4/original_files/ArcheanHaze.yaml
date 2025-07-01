@@ -1,0 +1,1813 @@
+reverse-reactions: false
+
+atoms:
+- {name: H, mass: 1.00797, redox: -0.5}
+- {name: N, mass: 14.0067, redox: 0}
+- {name: O, mass: 15.9994, redox: 1}
+- {name: C, mass: 12.011, redox: -2}
+- {name: S, mass: 32.06, redox: -2}
+
+species:
+- name: O
+  composition: {O: 1}
+- name: O2
+  composition: {O: 2}
+- name: H2O
+  composition: {O: 1, H: 2}
+- name: H
+  composition: {H: 1}
+- name: OH
+  composition: {O: 1, H: 1}
+- name: HO2
+  composition: {O: 2, H: 1}
+- name: H2O2
+  composition: {O: 2, H: 2}
+- name: H2
+  composition: {H: 2}
+- name: CO
+  composition: {O: 1, C: 1}
+- name: HCO
+  composition: {O: 1, H: 1, C: 1}
+- name: H2CO
+  composition: {O: 1, H: 2, C: 1}
+- name: CH4
+  composition: {H: 4, C: 1}
+- name: CH3
+  composition: {H: 3, C: 1}
+- name: C2H6
+  composition: {H: 6, C: 2}
+- name: 'NO'
+  composition: {O: 1, N: 1}
+- name: NO2
+  composition: {O: 2, N: 1}
+- name: HNO
+  composition: {O: 1, H: 1, N: 1}
+- name: O3
+  composition: {O: 3}
+- name: HNO3
+  composition: {O: 3, H: 1, N: 1}
+- name: N
+  composition: {N: 1}
+- name: C3H2
+  composition: {H: 2, C: 3}
+- name: C3H3
+  composition: {H: 3, C: 3}
+- name: CH3C2H
+  composition: {H: 4, C: 3}
+- name: CH2CCH2
+  composition: {H: 4, C: 3}
+- name: C3H5
+  composition: {H: 5, C: 3}
+- name: C2H5CHO
+  composition: {O: 1, H: 6, C: 3}
+- name: C3H6
+  composition: {H: 6, C: 3}
+- name: C3H7
+  composition: {H: 7, C: 3}
+- name: C3H8
+  composition: {H: 8, C: 3}
+- name: C2H4OH
+  composition: {O: 1, H: 5, C: 2}
+- name: C2H2OH
+  composition: {O: 1, H: 3, C: 2}
+- name: C2H5
+  composition: {H: 5, C: 2}
+- name: C2H4
+  composition: {H: 4, C: 2}
+- name: CH
+  composition: {H: 1, C: 1}
+- name: CH3O2
+  composition: {O: 2, H: 3, C: 1}
+- name: CH3O
+  composition: {O: 1, H: 3, C: 1}
+- name: CH2CO
+  composition: {O: 1, H: 2, C: 2}
+- name: CH3CO
+  composition: {O: 1, H: 3, C: 2}
+- name: CH3CHO
+  composition: {O: 1, H: 4, C: 2}
+- name: C2H2
+  composition: {H: 2, C: 2}
+- name: CH23
+  composition: {H: 2, C: 1}
+- name: C2H
+  composition: {H: 1, C: 2}
+- name: C2
+  composition: {C: 2}
+- name: C2H3
+  composition: {H: 3, C: 2}
+- name: HCS
+  composition: {H: 1, C: 1, S: 1}
+- name: CS2
+  composition: {C: 1, S: 2}
+- name: CS
+  composition: {C: 1, S: 1}
+- name: OCS
+  composition: {O: 1, C: 1, S: 1}
+- name: S
+  composition: {S: 1}
+- name: HS
+  composition: {H: 1, S: 1}
+- name: H2S
+  composition: {H: 2, S: 1}
+- name: SO3
+  composition: {O: 3, S: 1}
+- name: S2
+  composition: {S: 2}
+- name: HSO
+  composition: {O: 1, H: 1, S: 1}
+- name: H2SO4
+  composition: {O: 4, H: 2, S: 1}
+- name: SO2
+  composition: {O: 2, S: 1}
+- name: SO
+  composition: {O: 1, S: 1}
+- name: CO2
+  composition: {O: 2, C: 1}
+- name: HNO2
+  composition: {O: 2, H: 1, N: 1}
+- name: O1D
+  composition: {O: 1}
+- name: 1CH2
+  composition: {H: 2, C: 1}
+- name: C
+  composition: {C: 1}
+- name: SO21
+  composition: {O: 2, S: 1}
+- name: SO23
+  composition: {O: 2, S: 1}
+- name: HSO3
+  composition: {O: 3, H: 1, S: 1}
+- name: OCS2
+  composition: {O: 1, C: 1, S: 2}
+- name: CS2X
+  composition: {C: 1, S: 2}
+- name: S3
+  composition: {S: 3}
+- name: S4
+  composition: {S: 4}
+- name: N2
+  composition: {N: 2}
+
+particles:
+- name: H2Oaer
+  composition: {H: 2, O: 1}
+  density: 1.0
+  optical-properties: none
+  formation: saturation
+  gas-phase: H2O
+  saturation:
+    model: LinearLatentHeat
+    parameters: {mu: 18.01534, T-ref: 373.15, P-ref: 1014200.0, T-triple: 273.15,
+      T-critical: 647.0}
+    vaporization: {a: 28414210000.0, b: -13997320.0}
+    sublimation: {a: 27468840000.0, b: 4181527.0}
+    super-critical: {a: 1793161000000.0, b: 0.0}
+- name: SO4AER
+  composition: {H: 2, S: 1, O: 4}
+  density: 1.0
+  optical-properties: none
+  formation: saturation
+  gas-phase: H2SO4
+  saturation:
+    model: LinearLatentHeat
+    parameters: {mu: 98.079, T-ref: 400.0, P-ref: 104.2249, T-triple: 360.0,
+      T-critical: 905.0}
+    vaporization: {a: 10770640000.0, b: -6002994.0}
+    sublimation: {a: 10770640000.0, b: -6002994.0}
+    super-critical: {a: 321509500000.0, b: 0.0}
+- name: S8AER
+  formation: reaction
+  density: 1.0
+  composition: {S: 8}
+  optical-properties: none
+  equation: S4 + S4 (+ M) => S8AER (+ M)
+  type: falloff
+  low-P-rate-constant: {A: 9.0e-26, b: -2.0, Ea: 0.0}
+  high-P-rate-constant: {A: 3.0e-11, b: 0.0, Ea: 0.0}
+- name: HCAER
+  formation: reaction
+  density: 1.0
+  composition: {C: 4, H: 2}
+  optical-properties: khare1984
+  optical-type: mie
+  equation: C2H + C2H2 => HCAER + H
+  type: elementary
+  rate-constant: {A: 1.5e-10, b: 0.0, Ea: 0.0}
+- name: HCAER2
+  formation: reaction
+  density: 1.0
+  composition: {C: 5, H: 4}
+  optical-properties: khare1984
+  optical-type: mie
+  equation: C2H + CH2CCH2 => HCAER2 + H
+  type: elementary
+  rate-constant: {A: 1.5e-10, b: 0.0, Ea: 0.0}
+
+reactions:
+- equation: H2O + O1D => OH + OH
+  type: elementary
+  rate-constant: {A: 2.2e-10, b: 0.0, Ea: -0.0}
+  rxn: 1
+- equation: H2 + O1D => OH + H
+  type: elementary
+  rate-constant: {A: 1.1e-10, b: 0.0, Ea: -0.0}
+  rxn: 2
+- equation: H2 + O => OH + H
+  type: elementary
+  rate-constant: {A: 1.46e-09, b: 0, Ea: 9650}
+  duplicate: true
+  rxn: 3
+- equation: H2 + O => OH + H
+  type: elementary
+  rate-constant: {A: 6.34e-12, b: 0, Ea: 4000}
+  duplicate: true
+  rxn: 3
+- equation: H2 + OH => H2O + H
+  type: elementary
+  rate-constant: {A: 5.5e-12, b: 0.0, Ea: 2000.0}
+  rxn: 4
+- equation: H + O3 => OH + O2
+  type: elementary
+  rate-constant: {A: 1.4e-10, b: 0.0, Ea: 470.0}
+  rxn: 5
+- equation: H + O2 + M => HO2 + M
+  type: falloff
+  low-P-rate-constant: {A: 5.239246877388696e-28, b: -1.6, Ea: 0.0}
+  high-P-rate-constant: {A: 7.5e-11, b: -0.0, Ea: 0.0}
+  JPL: true
+  rxn: 6
+- equation: H + HO2 => H2 + O2
+  type: elementary
+  rate-constant: {A: 7.2e-12, b: 0.0, Ea: -0.0}
+  rxn: 7
+- equation: H + HO2 => H2O + O
+  type: elementary
+  rate-constant: {A: 1.6e-12, b: 0.0, Ea: -0.0}
+  rxn: 8
+- equation: H + HO2 => OH + OH
+  type: elementary
+  rate-constant: {A: 7.12e-11, b: 0.0, Ea: -0.0}
+  rxn: 9
+- equation: OH + O => H + O2
+  type: elementary
+  rate-constant: {A: 2.2e-11, b: 0.0, Ea: -120.0}
+  rxn: 10
+- equation: OH + HO2 => H2O + O2
+  type: elementary
+  rate-constant: {A: 4.8e-11, b: 0.0, Ea: -250.0}
+  rxn: 11
+- equation: OH + O3 => HO2 + O2
+  type: elementary
+  rate-constant: {A: 1.6e-12, b: 0.0, Ea: 940.0}
+  rxn: 12
+- equation: HO2 + O => OH + O2
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -200.0}
+  rxn: 13
+- equation: HO2 + O3 => OH + O2 + O2
+  type: elementary
+  rate-constant: {A: 1.0e-14, b: 0.0, Ea: 490.0}
+  rxn: 14
+- equation: HO2 + HO2 + M => H2O2 + O2 + M
+  type: three-body
+  rate-constant: {A: 2.1e-33, b: 0, Ea: -920.0}
+  duplicate: true
+  rxn: 15
+- equation: HO2 + HO2 => H2O2 + O2
+  type: elementary
+  rate-constant: {A: 3.0e-13, b: 0, Ea: -460.0}
+  duplicate: true
+  rxn: 15
+- equation: H2O2 + OH => HO2 + H2O
+  type: elementary
+  rate-constant: {A: 2.9e-12, b: 0.0, Ea: 160.0}
+  rxn: 16
+- equation: O + O + M => O2 + M
+  type: three-body
+  rate-constant: {A: 1.654499e-27, b: -2.6, Ea: 0}
+  rxn: 17
+- equation: O + O2 + M => O3 + M
+  type: falloff
+  low-P-rate-constant: {A: 5.287401156749272e-28, b: -2.4, Ea: 0.0}
+  high-P-rate-constant: {A: 3.0e-11, b: -0.0, Ea: 0.0}
+  JPL: true
+  rxn: 18
+- equation: O + O3 => O2 + O2
+  type: elementary
+  rate-constant: {A: 8.0e-12, b: 0.0, Ea: 2060.0}
+  rxn: 19
+- equation: OH + OH => H2O + O
+  type: elementary
+  rate-constant: {A: 4.2e-12, b: 0.0, Ea: 240.0}
+  rxn: 20
+- equation: O1D + M => O + M
+  type: three-body
+  rate-constant: {A: 1.8e-11, b: 0.0, Ea: -110.0}
+  rxn: 21
+- equation: O1D + O2 => O + O2
+  type: elementary
+  rate-constant: {A: 3.2e-11, b: 0.0, Ea: -70.0}
+  rxn: 22
+- equation: O2 + hv => O + O1D
+  type: photolysis
+  rxn: 23
+- equation: O2 + hv => O + O
+  type: photolysis
+  rxn: 24
+- equation: H2O + hv => H + OH
+  type: photolysis
+  rxn: 25
+- equation: O3 + hv => O2 + O1D
+  type: photolysis
+  rxn: 26
+- equation: O3 + hv => O2 + O
+  type: photolysis
+  rxn: 27
+- equation: H2O2 + hv => OH + OH
+  type: photolysis
+  rxn: 28
+- equation: CO2 + hv => CO + O
+  type: photolysis
+  rxn: 29
+- equation: CO2 + hv => CO + O1D
+  type: photolysis
+  rxn: 30
+- equation: CO + OH + M => CO2 + H + M
+  type: falloff
+  low-P-rate-constant: {A: 1.700425e-22, b: -4.2, Ea: 0}
+  high-P-rate-constant: {A: 6.682078e-16, b: 1.3, Ea: 0}
+  JPL: true
+  rxn: 31
+- equation: CO + O + M => CO2 + M
+  type: three-body
+  rate-constant: {A: 1.6e-32, b: 0, Ea: 2184}
+  rxn: 32
+- equation: H + CO + M => HCO + M
+  type: three-body
+  rate-constant: {A: 1.0e-33, b: 0, Ea: 629}
+  rxn: 33
+- equation: H + HCO => H2 + CO
+  type: elementary
+  rate-constant: {A: 1.8e-10, b: 0.0, Ea: -0.0}
+  rxn: 34
+- equation: HCO + HCO => H2CO + CO
+  type: elementary
+  rate-constant: {A: 4.5e-11, b: 0.0, Ea: -0.0}
+  rxn: 35
+- equation: OH + HCO => H2O + CO
+  type: elementary
+  rate-constant: {A: 1.0e-10, b: 0.0, Ea: -0.0}
+  rxn: 36
+- equation: O + HCO => H + CO2
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 37
+- equation: O + HCO => OH + CO
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 38
+- equation: H2CO + hv => H2 + CO
+  type: photolysis
+  rxn: 39
+- equation: H2CO + hv => HCO + H
+  type: photolysis
+  rxn: 40
+- equation: HCO => H + CO
+  type: elementary
+  rate-constant: {A: 0.01, b: 0.0, Ea: -0.0}
+  rxn: 41
+- equation: H2CO + H => H2 + HCO
+  type: elementary
+  rate-constant: {A: 2.099827e-16, b: 1.62, Ea: 1090.0}
+  rxn: 42
+- equation: H + H + M => H2 + M
+  type: three-body
+  rate-constant: {A: 2.640416e-31, b: -0.6, Ea: 0}
+  rxn: 43
+- equation: HCO + O2 => HO2 + CO
+  type: elementary
+  rate-constant: {A: 5.2e-12, b: 0.0, Ea: -0.0}
+  rxn: 44
+- equation: H2CO + OH => H2O + HCO
+  type: elementary
+  rate-constant: {A: 5.5e-12, b: 0.0, Ea: -125.0}
+  rxn: 45
+- equation: H + OH + M => H2O + M
+  type: three-body
+  rate-constant: {A: 6.127476e-26, b: -2, Ea: 0}
+  rxn: 46
+- equation: OH + OH + M => H2O2 + M
+  type: falloff
+  low-P-rate-constant: {A: 2.07e-28, b: -1.0, Ea: 0.0}
+  high-P-rate-constant: {A: 2.6e-11, b: -0.0, Ea: 0.0}
+  JPL: true
+  rxn: 47
+- equation: H2CO + O => HCO + OH
+  type: elementary
+  rate-constant: {A: 3.4e-11, b: 0.0, Ea: 1600.0}
+  rxn: 48
+- equation: H2O2 + O => OH + HO2
+  type: elementary
+  rate-constant: {A: 1.4e-12, b: 0.0, Ea: 2000.0}
+  rxn: 49
+- equation: HO2 + hv => OH + O
+  type: photolysis
+  rxn: 50
+- equation: HNO2 => NO + OH
+  type: elementary
+  rate-constant: {A: 0.0017, b: 0.0, Ea: -0.0}
+  rxn: 51
+- equation: HNO3 + hv => NO2 + OH
+  type: photolysis
+  rxn: 52
+- equation: NO + hv => N + O
+  type: photolysis
+  rxn: 53
+- equation: NO2 + hv => NO + O
+  type: photolysis
+  rxn: 54
+- equation: CH4 + OH => CH3 + H2O
+  type: elementary
+  rate-constant: {A: 2.45e-12, b: 0.0, Ea: 1775.0}
+  rxn: 55
+- equation: CH4 + O1D => CH3 + OH
+  type: elementary
+  rate-constant: {A: 1.125e-10, b: 0.0, Ea: -0.0}
+  rxn: 56
+- equation: CH4 + O1D => H2CO + H2
+  type: elementary
+  rate-constant: {A: 7.5e-12, b: 0.0, Ea: -0.0}
+  rxn: 57
+- equation: 1CH2 + CH4 => CH3 + CH3
+  type: elementary
+  rate-constant: {A: 3.6e-11, b: 0.0, Ea: -0.0}
+  rxn: 58
+- equation: 1CH2 + O2 => HCO + OH
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 59
+- equation: 1CH2 + M => CH23 + M
+  type: three-body
+  rate-constant: {A: 8.8e-12, b: 0.0, Ea: -0.0}
+  rxn: 60
+- equation: CH23 + H2 => CH3 + H
+  type: elementary
+  rate-constant: {A: 5.0e-14, b: 0.0, Ea: -0.0}
+  rxn: 61
+- equation: CH23 + CH4 => CH3 + CH3
+  type: elementary
+  rate-constant: {A: 7.1e-12, b: 0.0, Ea: 5051.0}
+  rxn: 62
+- equation: CH23 + O2 => HCO + OH
+  type: elementary
+  rate-constant: {A: 4.1e-11, b: 0.0, Ea: 750.0}
+  rxn: 63
+- equation: CH3 + O2 + M => H2CO + OH + M
+  type: falloff
+  low-P-rate-constant: {A: 1.215e-23, b: -3.0, Ea: 0.0}
+  high-P-rate-constant: {A: 2.926702901548741e-08, b: -1.7, Ea: 0.0}
+  JPL: true
+  rxn: 64
+- equation: CH3 + O => H2CO + H
+  type: elementary
+  rate-constant: {A: 1.1e-10, b: 0.0, Ea: -0.0}
+  rxn: 65
+- equation: CH3 + O3 => H2CO + HO2
+  type: elementary
+  rate-constant: {A: 5.4e-12, b: 0.0, Ea: 220.0}
+  rxn: 66
+- equation: CH3 + OH => CO + H2 + H2
+  type: elementary
+  rate-constant: {A: 6.7e-12, b: 0.0, Ea: -0.0}
+  rxn: 67
+- equation: CH3 + CH3 + M => C2H6 + M
+  type: falloff
+  low-P-rate-constant: {A: 2.277144e-16, b: -3.75, Ea: 500}
+  high-P-rate-constant: {A: 9.0e-09, b: -1, Ea: 0}
+  JPL: true
+  rxn: 68
+- equation: CH3 => CH23 + H
+  type: elementary
+  rate-constant: {A: 1.0e-05, b: 0.0, Ea: -0.0}
+  rxn: 69
+- equation: CH3 + H + M => CH4 + M
+  type: falloff
+  low-P-rate-constant: {A: 2.8761945465425486e-24, b: -1.8, Ea: 0.0}
+  high-P-rate-constant: {A: 1.958296724721954e-09, b: -0.4, Ea: 0.0}
+  JPL: true
+  rxn: 70
+- equation: CH3 + HCO => CH4 + CO
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 71
+- equation: CH3 + HNO => CH4 + NO
+  type: elementary
+  rate-constant: {A: 3.3e-12, b: 0.0, Ea: 1000.0}
+  rxn: 72
+- equation: CH3 + H2CO => CH4 + HCO
+  type: elementary
+  rate-constant: {A: 6.362745e-26, b: 4.4, Ea: 2450}
+  rxn: 73
+- equation: H + NO + M => HNO + M
+  type: falloff
+  low-P-rate-constant: {A: 9.493211e-29, b: -1.17, Ea: 210}
+  high-P-rate-constant: {A: 2.487889e-09, b: -0.41, Ea: 0}
+  JPL: true
+  rxn: 74
+- equation: N + N + M => N2 + M
+  type: three-body
+  rate-constant: {A: 1.25e-32, b: 0, Ea: 0}
+  rxn: 75
+- equation: N + O2 => NO + O
+  type: elementary
+  rate-constant: {A: 1.5e-12, b: 0.0, Ea: 3600.0}
+  rxn: 76
+- equation: N + O3 => NO + O2
+  type: elementary
+  rate-constant: {A: 1.0e-16, b: 0.0, Ea: -0.0}
+  rxn: 77
+- equation: N + OH => NO + H
+  type: elementary
+  rate-constant: {A: 3.8e-11, b: 0.0, Ea: -85.0}
+  rxn: 78
+- equation: N + NO => N2 + O
+  type: elementary
+  rate-constant: {A: 2.1e-11, b: 0.0, Ea: -100.0}
+  rxn: 79
+- equation: NO + O3 => NO2 + O2
+  type: elementary
+  rate-constant: {A: 3.0e-12, b: 0.0, Ea: 1500.0}
+  rxn: 80
+- equation: NO + O + M => NO2 + M
+  type: falloff
+  low-P-rate-constant: {A: 4.676537180435969e-27, b: -1.5, Ea: 0.0}
+  high-P-rate-constant: {A: 3.0e-11, b: -0.0, Ea: 0.0}
+  JPL: true
+  rxn: 81
+- equation: NO + HO2 => NO2 + OH
+  type: elementary
+  rate-constant: {A: 3.5e-12, b: 0.0, Ea: -250.0}
+  rxn: 82
+- equation: NO + OH + M => HNO2 + M
+  type: falloff
+  low-P-rate-constant: {A: 1.930248849564256e-24, b: -2.6, Ea: 0.0}
+  high-P-rate-constant: {A: 6.368169673707932e-11, b: -0.1, Ea: 0.0}
+  JPL: true
+  rxn: 83
+- equation: NO2 + O => NO + O2
+  type: elementary
+  rate-constant: {A: 5.6e-12, b: 0.0, Ea: -180.0}
+  rxn: 84
+- equation: NO2 + OH + M => HNO3 + M
+  type: falloff
+  low-P-rate-constant: {A: 5.400000000000001e-23, b: -3.0, Ea: 0.0}
+  high-P-rate-constant: {A: 2.5e-11, b: -0.0, Ea: 0.0}
+  JPL: true
+  rxn: 85
+- equation: NO2 + H => NO + OH
+  type: elementary
+  rate-constant: {A: 4.0e-10, b: 0.0, Ea: 340.0}
+  rxn: 86
+- equation: HCO + NO => HNO + CO
+  type: elementary
+  rate-constant: {A: 1.3e-11, b: 0.0, Ea: -0.0}
+  rxn: 87
+- equation: HNO => NO + H
+  type: elementary
+  rate-constant: {A: 0.0017, b: 0.0, Ea: -0.0}
+  rxn: 88
+- equation: H + HNO => H2 + NO
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0, Ea: 500.0}
+  rxn: 89
+- equation: O + HNO => OH + NO
+  type: elementary
+  rate-constant: {A: 3.8e-11, b: 0.0, Ea: -0.0}
+  rxn: 90
+- equation: OH + HNO => H2O + NO
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 91
+- equation: HNO2 + OH => H2O + NO2
+  type: elementary
+  rate-constant: {A: 1.8e-11, b: 0.0, Ea: 390.0}
+  rxn: 92
+- equation: CH4 + O => CH3 + OH
+  type: elementary
+  rate-constant: {A: 5.8e-11, b: 0.0, Ea: 4450.0}
+  rxn: 93
+- equation: 1CH2 + H2 => CH3 + H
+  type: elementary
+  rate-constant: {A: 5.0e-15, b: 0.0, Ea: -0.0}
+  rxn: 94
+- equation: 1CH2 + H2 => CH23 + H2
+  type: elementary
+  rate-constant: {A: 1.26e-11, b: 0.0, Ea: -0.0}
+  rxn: 95
+- equation: 1CH2 + CO2 => H2CO + CO
+  type: elementary
+  rate-constant: {A: 1.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 96
+- equation: CH23 + O => HCO + H
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 97
+- equation: CH23 + CO2 => H2CO + CO
+  type: elementary
+  rate-constant: {A: 1.0e-14, b: 0.0, Ea: -0.0}
+  rxn: 98
+- equation: C2H6 + OH => C2H5 + H2O
+  type: elementary
+  rate-constant: {A: 8.7e-12, b: 0.0, Ea: 1070.0}
+  rxn: 99
+- equation: C2H6 + O => C2H5 + OH
+  type: elementary
+  rate-constant: {A: 1.643524e-15, b: 1.5, Ea: 2920}
+  rxn: 100
+- equation: C2H6 + O1D => C2H5 + OH
+  type: elementary
+  rate-constant: {A: 6.2e-10, b: 0.0, Ea: -0.0}
+  rxn: 101
+- equation: C2H5 + HCO => C2H6 + CO
+  type: elementary
+  rate-constant: {A: 1.0e-10, b: 0.0, Ea: -0.0}
+  rxn: 102
+- equation: C2H5 + HNO => C2H6 + NO
+  type: elementary
+  rate-constant: {A: 1.6e-12, b: 0.0, Ea: 1000.0}
+  rxn: 103
+- equation: C2H5 + O2 + M => CH3 + HCO + OH + M
+  type: falloff
+  low-P-rate-constant: {A: 1.1896652602685892e-17, b: -4.4, Ea: 0.0}
+  high-P-rate-constant: {A: 5.464769638430842e-07, b: -1.8, Ea: 0.0}
+  JPL: true
+  rxn: 104
+- equation: CO + O1D => CO + O
+  type: elementary
+  rate-constant: {A: 7.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 105
+- equation: CO + O1D + M => CO2 + M
+  type: three-body
+  rate-constant: {A: 0.0, b: 0.0, Ea: 0.0}
+  rxn: 106
+- equation: HNO3 + OH => H2O + NO2 + O
+  type: elementary
+  rate-constant: {A: 2.4e-14, b: 0, Ea: -460}
+  duplicate: true
+  rxn: 107
+- equation: HNO3 + OH + M => H2O + NO2 + O + M
+  type: falloff
+  low-P-rate-constant: {A: 6.5e-34, b: 0, Ea: -1335}
+  high-P-rate-constant: {A: 2.7e-17, b: 0, Ea: -2199}
+  duplicate: true
+  rxn: 107
+- equation: N + HO2 => NO + OH
+  type: elementary
+  rate-constant: {A: 2.2e-11, b: 0.0, Ea: -0.0}
+  rxn: 108
+- equation: HO2 + NO2 => HNO2 + O2
+  type: elementary
+  rate-constant: {A: 5.0e-16, b: 0.0, Ea: -0.0}
+  rxn: 109
+- equation: SO + hv => S + O
+  type: photolysis
+  rxn: 110
+- equation: H2S + hv => HS + H
+  type: photolysis
+  rxn: 111
+- equation: SO2 + hv => SO + O
+  type: photolysis
+  rxn: 112
+- equation: SO2 + hv => SO21
+  type: photolysis
+  rxn: 113
+- equation: SO2 + hv => SO23
+  type: photolysis
+  rxn: 114
+- equation: SO + O2 => O + SO2
+  type: elementary
+  rate-constant: {A: 2.6e-13, b: 0.0, Ea: 2400.0}
+  rxn: 115
+- equation: SO + HO2 => SO2 + OH
+  type: elementary
+  rate-constant: {A: 2.8e-11, b: 0.0, Ea: -0.0}
+  rxn: 116
+- equation: SO + O + M => SO2 + M
+  type: three-body
+  rate-constant: {A: 6.0e-31, b: 0, Ea: 0}
+  rxn: 117
+- equation: SO + OH => SO2 + H
+  type: elementary
+  rate-constant: {A: 8.6e-11, b: 0.0, Ea: -0.0}
+  rxn: 118
+- equation: SO2 + OH + M => HSO3 + M
+  type: falloff
+  low-P-rate-constant: {A: 4.4835435783577944e-23, b: -3.3, Ea: 0.0}
+  high-P-rate-constant: {A: 1.5e-12, b: -0.0, Ea: 0.0}
+  JPL: true
+  rxn: 119
+- equation: SO2 + O + M => SO3 + M
+  type: falloff
+  low-P-rate-constant: {A: 1.571472680332431e-42, b: 3.6, Ea: 0.0}
+  high-P-rate-constant: {A: 1.5e-11, b: -0.0, Ea: 0.0}
+  JPL: true
+  rxn: 120
+- equation: SO3 + H2O => H2SO4
+  type: elementary
+  rate-constant: {A: 1.2e-15, b: 0.0, Ea: -0.0}
+  rxn: 121
+- equation: HSO3 + O2 => HO2 + SO3
+  type: elementary
+  rate-constant: {A: 1.3e-12, b: 0.0, Ea: 330.0}
+  rxn: 122
+- equation: HSO3 + OH => H2O + SO3
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 123
+- equation: HSO3 + H => H2 + SO3
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 124
+- equation: HSO3 + O => OH + SO3
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 125
+- equation: H2S + OH => H2O + HS
+  type: elementary
+  rate-constant: {A: 6.0e-12, b: 0.0, Ea: 70.0}
+  rxn: 126
+- equation: H2S + H => H2 + HS
+  type: elementary
+  rate-constant: {A: 1.5e-11, b: 0.0, Ea: 850.0}
+  rxn: 127
+- equation: H2S + O => OH + HS
+  type: elementary
+  rate-constant: {A: 9.2e-12, b: 0.0, Ea: 1800.0}
+  rxn: 128
+- equation: HS + O => H + SO
+  type: elementary
+  rate-constant: {A: 7.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 129
+- equation: HS + O2 => OH + SO
+  type: elementary
+  rate-constant: {A: 4.0e-19, b: 0.0, Ea: -0.0}
+  rxn: 130
+- equation: HS + HO2 => H2S + O2
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 131
+- equation: HS + HS => H2S + S
+  type: elementary
+  rate-constant: {A: 2.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 132
+- equation: HS + HCO => H2S + CO
+  type: elementary
+  rate-constant: {A: 2.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 133
+- equation: HS + H => H2 + S
+  type: elementary
+  rate-constant: {A: 2.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 134
+- equation: HS + S => H + S2
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 135
+- equation: S + O2 => SO + O
+  type: elementary
+  rate-constant: {A: 2.3e-12, b: 0.0, Ea: -0.0}
+  rxn: 136
+- equation: S + OH => SO + H
+  type: elementary
+  rate-constant: {A: 6.6e-11, b: 0.0, Ea: -0.0}
+  rxn: 137
+- equation: S + HCO => HS + CO
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 138
+- equation: S + HO2 => HS + O2
+  type: elementary
+  rate-constant: {A: 5.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 139
+- equation: S + HO2 => SO + OH
+  type: elementary
+  rate-constant: {A: 5.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 140
+- equation: S + S + M => S2 + M
+  type: three-body
+  rate-constant: {A: 1.87e-33, b: 0, Ea: 206}
+  rxn: 141
+- equation: S2 + O => S + SO
+  type: elementary
+  rate-constant: {A: 1.1e-11, b: 0.0, Ea: -0.0}
+  rxn: 142
+- equation: HS + H2CO => H2S + HCO
+  type: elementary
+  rate-constant: {A: 1.7e-11, b: 0.0, Ea: 800.0}
+  rxn: 143
+- equation: S2 + hv => S + S
+  type: photolysis
+  rxn: 144
+- equation: S + S2 + M => S3 + M
+  type: falloff
+  low-P-rate-constant: {A: 5.0e-32, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 5.0e-11, b: 0, Ea: 0}
+  rxn: 145
+  note: Approximately right. Atmos gives MIN(5.0E-11,2.5E-30*DEN(I)/5.E1)
+- equation: S2 + S2 + M => S4 + M
+  type: falloff
+  low-P-rate-constant: {A: 2.5e-31, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 5.0e-11, b: 0, Ea: 0}
+  rxn: 146
+  note: Approximately right. Atmos gives MIN(5.0E-11,2.5E-30*DEN(I)/1.E1)
+- equation: S + S3 + M => S4 + M
+  type: falloff
+  low-P-rate-constant: {A: 5.0e-32, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 5.0e-11, b: 0, Ea: 0}
+  rxn: 147
+  note: Approximately right. Atmos gives MIN(5.0E-11,2.5E-30*DEN(I)/5.E1)
+- equation: S4 + hv => S2 + S2
+  type: photolysis
+  rxn: 149
+- equation: S3 + hv => S2 + S
+  type: photolysis
+  rxn: 150
+- equation: SO3 + hv => SO2 + O
+  type: photolysis
+  rxn: 151
+- equation: SO21 => SO23
+  type: elementary
+  rate-constant: {A: 1.0e-12, b: 0.0, Ea: -0.0}
+  duplicate: true
+  rxn: 152
+- equation: SO21 => SO2
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  duplicate: true
+  rxn: 153
+- equation: SO21 => SO23
+  type: elementary
+  rate-constant: {A: 1500.0, b: 0.0, Ea: -0.0}
+  duplicate: true
+  rxn: 154
+- equation: SO21 => SO2
+  type: elementary
+  rate-constant: {A: 22000.0, b: 0.0, Ea: -0.0}
+  duplicate: true
+  rxn: 155
+- equation: SO21 + O2 => SO3 + O
+  type: elementary
+  rate-constant: {A: 1.0e-16, b: 0.0, Ea: -0.0}
+  rxn: 156
+- equation: SO21 + SO2 => SO3 + SO
+  type: elementary
+  rate-constant: {A: 4.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 157
+- equation: SO23 => SO2
+  type: elementary
+  rate-constant: {A: 1.5e-13, b: 0.0, Ea: -0.0}
+  duplicate: true
+  rxn: 158
+- equation: SO23 => SO2
+  type: elementary
+  rate-constant: {A: 1130.0, b: 0.0, Ea: -0.0}
+  duplicate: true
+  rxn: 159
+- equation: SO23 + SO2 => SO3 + SO
+  type: elementary
+  rate-constant: {A: 7.0e-14, b: 0.0, Ea: -0.0}
+  rxn: 160
+- equation: SO + NO2 => SO2 + NO
+  type: elementary
+  rate-constant: {A: 1.4e-11, b: 0.0, Ea: -0.0}
+  rxn: 161
+- equation: SO + O3 => SO2 + O2
+  type: elementary
+  rate-constant: {A: 4.5e-12, b: 0.0, Ea: 1170.0}
+  rxn: 162
+- equation: SO2 + HO2 => SO3 + OH
+  type: elementary
+  rate-constant: {A: 1.0e-18, b: 0.0, Ea: -0.0}
+  rxn: 163
+- equation: HS + O3 => HSO + O2
+  type: elementary
+  rate-constant: {A: 9.0e-12, b: 0.0, Ea: 280.0}
+  rxn: 164
+- equation: HS + NO2 => HSO + NO
+  type: elementary
+  rate-constant: {A: 2.9e-11, b: 0.0, Ea: -240.0}
+  rxn: 165
+- equation: S + O3 => SO + O2
+  type: elementary
+  rate-constant: {A: 1.2e-11, b: 0.0, Ea: -0.0}
+  rxn: 166
+- equation: SO + SO => SO2 + S
+  type: elementary
+  rate-constant: {A: 2.0e-15, b: 0.0, Ea: -0.0}
+  rxn: 167
+- equation: SO3 + SO => SO2 + SO2
+  type: elementary
+  rate-constant: {A: 2.0e-15, b: 0.0, Ea: -0.0}
+  rxn: 168
+- equation: S + CO2 => SO + CO
+  type: elementary
+  rate-constant: {A: 1.0e-20, b: 0.0, Ea: -0.0}
+  rxn: 169
+- equation: SO + HO2 => HSO + O2
+  type: elementary
+  rate-constant: {A: 2.8e-11, b: 0.0, Ea: -0.0}
+  rxn: 170
+- equation: SO + HCO => HSO + CO
+  type: elementary
+  rate-constant: {A: 5.2e-12, b: 0.0, Ea: -0.0}
+  rxn: 171
+- equation: H + SO + M => HSO + M
+  type: falloff
+  low-P-rate-constant: {A: 5.239246877388696e-28, b: -1.6, Ea: 0.0}
+  high-P-rate-constant: {A: 7.5e-11, b: -0.0, Ea: 0.0}
+  JPL: true
+  rxn: 172
+- equation: HSO + hv => HS + O
+  type: photolysis
+  rxn: 173
+- equation: HSO + NO => HNO + SO
+  type: elementary
+  rate-constant: {A: 1.0e-15, b: 0.0, Ea: -0.0}
+  rxn: 174
+- equation: HSO + OH => H2O + SO
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 175
+- equation: HSO + H => HS + OH
+  type: elementary
+  rate-constant: {A: 2.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 176
+- equation: HSO + H => H2 + SO
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 177
+- equation: HSO + HS => H2S + SO
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 178
+- equation: HSO + O => OH + SO
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 179
+- equation: HSO + S => HS + SO
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 180
+- equation: SO3 + CO => SO2 + CO2
+  type: elementary
+  rate-constant: {A: 0.0, b: 0.0, Ea: -0.0}
+  rxn: 181
+- equation: H + OCS => CO + HS
+  type: elementary
+  rate-constant: {A: 9.1e-12, b: 0.0, Ea: 1940.0}
+  rxn: 182
+- equation: HS + CO => OCS + H
+  type: elementary
+  rate-constant: {A: 4.15e-14, b: 0.0, Ea: 7650.0}
+  rxn: 183
+- equation: O + OCS => CO + SO
+  type: elementary
+  rate-constant: {A: 2.1e-11, b: 0.0, Ea: 2200.0}
+  rxn: 184
+- equation: O + OCS => S + CO2
+  type: elementary
+  rate-constant: {A: 8.33e-11, b: 0.0, Ea: 5530.0}
+  rxn: 185
+- equation: OCS + S => CO + S2
+  type: elementary
+  rate-constant: {A: 1.5e-10, b: 0.0, Ea: 1830.0}
+  rxn: 186
+- equation: OCS + OH => CO2 + HS
+  type: elementary
+  rate-constant: {A: 1.1e-13, b: 0.0, Ea: 1200.0}
+  rxn: 187
+- equation: S + HCO => OCS + H
+  type: elementary
+  rate-constant: {A: 8.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 188
+- equation: S + CO + M => OCS + M
+  type: three-body
+  rate-constant: {A: 4.0e-33, b: 0, Ea: 1780}
+  rxn: 189
+- equation: OCS + hv => CO + S
+  type: photolysis
+  rxn: 190
+- equation: H2S + HO2 => H2O + HSO
+  type: elementary
+  rate-constant: {A: 3.0e-15, b: 0.0, Ea: -0.0}
+  rxn: 191
+- equation: OCS + S + M => OCS2 + M
+  type: three-body
+  rate-constant: {A: 8.3e-33, b: 0, Ea: 0}
+  rxn: 192
+- equation: OCS2 + S => OCS + S2
+  type: elementary
+  rate-constant: {A: 2.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 193
+- equation: S3 + O => S2 + SO
+  type: elementary
+  rate-constant: {A: 0.0, b: 0.0, Ea: -0.0}
+  rxn: 194
+- equation: S4 + O => S3 + SO
+  type: elementary
+  rate-constant: {A: 0.0, b: 0.0, Ea: -0.0}
+  rxn: 195
+- equation: OCS2 + CO => OCS + OCS
+  type: elementary
+  rate-constant: {A: 3.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 196
+- equation: CS + O2 => OCS + O
+  type: elementary
+  rate-constant: {A: 4.0e-19, b: 0.0, Ea: -0.0}
+  rxn: 197
+- equation: CS + O2 => CO + SO
+  type: elementary
+  rate-constant: {A: 5.0e-20, b: 0.0, Ea: -0.0}
+  rxn: 198
+- equation: CS + O3 => OCS + O2
+  type: elementary
+  rate-constant: {A: 3.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 199
+- equation: CS + O3 => SO + CO2
+  type: elementary
+  rate-constant: {A: 3.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 200
+- equation: CS + O3 => CO + SO2
+  type: elementary
+  rate-constant: {A: 3.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 201
+- equation: CS2 + O => SO + CS
+  type: elementary
+  rate-constant: {A: 3.2e-11, b: 0.0, Ea: 650.0}
+  rxn: 202
+- equation: CS2 + O => OCS + S
+  type: elementary
+  rate-constant: {A: 3.0e-12, b: 0.0, Ea: 650.0}
+  rxn: 203
+- equation: CS2 + OH => OCS + HS
+  type: elementary
+  rate-constant: {A: 2.0e-15, b: 0.0, Ea: -0.0}
+  rxn: 204
+- equation: CS2X + M => CS2 + M
+  type: three-body
+  rate-constant: {A: 2.5e-11, b: 0.0, Ea: -0.0}
+  rxn: 205
+- equation: CS2X + O2 => CS + SO2
+  type: elementary
+  rate-constant: {A: 1.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 206
+- equation: CS2X + CS2 => CS + CS + S2
+  type: elementary
+  rate-constant: {A: 1.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 207
+- equation: CS + HS + M => CS2 + H + M
+  type: three-body
+  rate-constant: {A: 1.226061e-35, b: 1, Ea: 0}
+  duplicate: true
+  rxn: 208
+- equation: CS + HS => CS2 + H
+  type: elementary
+  rate-constant: {A: 1.5e-13, b: 0, Ea: 0}
+  duplicate: true
+  rxn: 208
+- equation: CS2 + O => CO + S2
+  type: elementary
+  rate-constant: {A: 5.81e-14, b: 0.0, Ea: 0}
+  rxn: 209
+- equation: CS2 + SO => OCS + S2
+  type: elementary
+  rate-constant: {A: 2.4e-13, b: 0.0, Ea: 2370.0}
+  rxn: 210
+- equation: CS2 + S => CS + S2
+  type: elementary
+  rate-constant: {A: 2.783442e-24, b: 3.97, Ea: 580}
+  rxn: 211
+- equation: CS + O => CO + S
+  type: elementary
+  rate-constant: {A: 2.7e-10, b: 0.0, Ea: 760.0}
+  rxn: 212
+- equation: CS2 + hv => CS + S
+  type: photolysis
+  rxn: 213
+- equation: CS2 + hv => CS2X
+  type: photolysis
+  rxn: 214
+- equation: CH4 + HS => CH3 + H2S
+  type: elementary
+  rate-constant: {A: 2.99e-31, b: 0.0, Ea: 0}
+  rxn: 215
+- equation: H + CS + M => HCS + M
+  type: three-body
+  rate-constant: {A: 2.0e-33, b: 0, Ea: 850}
+  rxn: 216
+- equation: H + HCS => H2 + CS
+  type: elementary
+  rate-constant: {A: 1.2e-10, b: 0.0, Ea: -0.0}
+  rxn: 217
+- equation: S + HCS => H + CS2
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 218
+- equation: S + HCS => HS + CS
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 219
+- equation: C2H5 + H => CH3 + CH3
+  type: elementary
+  rate-constant: {A: 6.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 220
+- equation: C2H5 + H + M => C2H6 + M
+  type: falloff
+  low-P-rate-constant: {A: 5.5e-23, b: -2, Ea: 1040}
+  high-P-rate-constant: {A: 1.5e-13, b: 0, Ea: 440}
+  rxn: 221
+- equation: C2H5 + H => C2H4 + H2
+  type: elementary
+  rate-constant: {A: 3.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 222
+- equation: C2H5 + O => CH3 + HCO + H
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 223
+- equation: C2H5 + O => H2CO + CH3
+  type: elementary
+  rate-constant: {A: 2.67e-11, b: 0.0, Ea: -0.0}
+  rxn: 224
+- equation: C2H5 + O => CH3CHO + H
+  type: elementary
+  rate-constant: {A: 1.33e-10, b: 0.0, Ea: -0.0}
+  rxn: 225
+- equation: C2H5 + OH => CH3 + HCO + H2
+  type: elementary
+  rate-constant: {A: 4.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 226
+- equation: C2H5 + OH => CH3CHO + H2
+  type: elementary
+  rate-constant: {A: 1.0e-10, b: 0.0, Ea: -0.0}
+  rxn: 227
+- equation: C2H5 + OH => C2H4 + H2O
+  type: elementary
+  rate-constant: {A: 4.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 228
+- equation: 1CH2 + S2 => HCS + HS
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 229
+- equation: CH23 + S2 => HCS + HS
+  type: elementary
+  rate-constant: {A: 4.1e-11, b: 0.0, Ea: 750.0}
+  rxn: 230
+- equation: CH3 + HCS => CH4 + CS
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 231
+- equation: CH23 + S => HCS + H
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 232
+- equation: HS + HCS => H2S + CS
+  type: elementary
+  rate-constant: {A: 2.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 233
+- equation: CH4 + hv => 1CH2 + H2
+  type: photolysis
+  rxn: 234
+- equation: CH4 + hv => CH3 + H
+  type: photolysis
+  rxn: 235
+- equation: CH4 + hv => CH23 + H + H
+  type: photolysis
+  rxn: 236
+- equation: C + OH => CO + H
+  type: elementary
+  rate-constant: {A: 4.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 237
+- equation: C + H2 + M => CH23 + M
+  type: falloff
+  low-P-rate-constant: {A: 8.75e-31, b: 0, Ea: -524}
+  high-P-rate-constant: {A: 8.3e-11, b: 0, Ea: 0}
+  rxn: 238
+- equation: C + O2 => CO + O
+  type: elementary
+  rate-constant: {A: 3.3e-11, b: 0.0, Ea: -0.0}
+  rxn: 239
+- equation: C + HS => CS + H
+  type: elementary
+  rate-constant: {A: 4.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 240
+- equation: C + S2 => CS + S
+  type: elementary
+  rate-constant: {A: 3.3e-11, b: 0.0, Ea: -0.0}
+  rxn: 241
+- equation: CH + H => C + H2
+  type: elementary
+  rate-constant: {A: 1.4e-11, b: 0.0, Ea: -0.0}
+  rxn: 242
+- equation: CH + O => CO + H
+  type: elementary
+  rate-constant: {A: 9.5e-11, b: 0.0, Ea: -0.0}
+  rxn: 243
+- equation: CH + H2 => CH23 + H
+  type: elementary
+  rate-constant: {A: 2.38e-10, b: 0.0, Ea: 1760.0}
+  rxn: 244
+- equation: CH + H2 + M => CH3 + M
+  type: falloff
+  low-P-rate-constant: {A: 8.75e-31, b: 0, Ea: -524}
+  high-P-rate-constant: {A: 8.3e-11, b: 0, Ea: 0}
+  rxn: 245
+- equation: CH + O2 => CO + OH
+  type: elementary
+  rate-constant: {A: 5.9e-11, b: 0.0, Ea: -0.0}
+  rxn: 246
+- equation: CH + CO2 => HCO + CO
+  type: elementary
+  rate-constant: {A: 5.9e-12, b: 0.0, Ea: 350.0}
+  rxn: 247
+- equation: CH + hv => C + H
+  type: photolysis
+  rxn: 248
+- equation: CH + S => CS + H
+  type: elementary
+  rate-constant: {A: 9.5e-11, b: 0.0, Ea: -0.0}
+  rxn: 249
+- equation: CH + S2 => CS + HS
+  type: elementary
+  rate-constant: {A: 5.9e-11, b: 0.0, Ea: -0.0}
+  rxn: 250
+- equation: CH + CS2 => HCS + CS
+  type: elementary
+  rate-constant: {A: 3.49e-10, b: 0.0, Ea: 40.0}
+  rxn: 251
+- equation: OCS + CH => CO + HCS
+  type: elementary
+  rate-constant: {A: 1.99e-10, b: 0.0, Ea: -190.0}
+  rxn: 252
+- equation: CH23 + O => CH + OH
+  type: elementary
+  rate-constant: {A: 8.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 253
+- equation: CH23 + O => CO + H + H
+  type: elementary
+  rate-constant: {A: 8.3e-11, b: 0.0, Ea: -0.0}
+  rxn: 254
+- equation: CH23 + H + M => CH3 + M
+  type: falloff
+  low-P-rate-constant: {A: 3.1e-30, b: 0, Ea: -457}
+  high-P-rate-constant: {A: 1.5e-10, b: 0, Ea: 0}
+  rxn: 255
+- equation: CH23 + H => CH + H2
+  type: elementary
+  rate-constant: {A: 4.7e-10, b: 0.0, Ea: 370.0}
+  rxn: 256
+- equation: CH3 + O2 + M => CH3O2 + M
+  type: falloff
+  low-P-rate-constant: {A: 3.30899802782444e-22, b: -3.6, Ea: 0.0}
+  high-P-rate-constant: {A: 2.2612462823427635e-15, b: 1.1, Ea: 0.0}
+  JPL: true
+  rxn: 257
+- equation: CH3O2 + H => CH4 + O2
+  type: elementary
+  rate-constant: {A: 1.4e-11, b: 0.0, Ea: -0.0}
+  rxn: 258
+- equation: CH3O2 + H => H2O + H2CO
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 259
+- equation: CH3O2 + O => H2CO + HO2
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 260
+- equation: NO + CH3O2 => CH3O + NO2
+  type: elementary
+  rate-constant: {A: 2.8e-12, b: 0.0, Ea: -300.0}
+  rxn: 261
+- equation: HCO + H2CO => CH3O + CO
+  type: elementary
+  rate-constant: {A: 3.8e-17, b: 0.0, Ea: -0.0}
+  rxn: 262
+- equation: CH3O + CO => CH3 + CO2
+  type: elementary
+  rate-constant: {A: 2.6e-11, b: 0.0, Ea: 5940.0}
+  rxn: 263
+- equation: CH3 + OH => CH3O + H
+  type: elementary
+  rate-constant: {A: 1.3e-11, b: 0.0, Ea: -0.0}
+  rxn: 264
+- equation: CH3 + O3 => CH3O + O2
+  type: elementary
+  rate-constant: {A: 5.4e-12, b: 0.0, Ea: 220.0}
+  rxn: 265
+- equation: NO + CH3O => HNO + H2CO
+  type: elementary
+  rate-constant: {A: 1.246559e-10, b: -0.7, Ea: 0}
+  rxn: 266
+- equation: NO2 + CH3O => H2CO + HNO2
+  type: elementary
+  rate-constant: {A: 9.6e-12, b: 0.0, Ea: 1150.0}
+  rxn: 267
+- equation: O1D + CH4 => CH3O + H
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 268
+- equation: CH3O + O2 => H2CO + HO2
+  type: elementary
+  rate-constant: {A: 7.2e-14, b: 0.0, Ea: 1080.0}
+  rxn: 269
+- equation: CH2CO + hv => CH23 + CO
+  type: photolysis
+  rxn: 270
+- equation: CH23 + CO + M => CH2CO + M
+  type: falloff
+  low-P-rate-constant: {A: 1.0e-28, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 1.0e-15, b: 0, Ea: 0}
+  rxn: 271
+- equation: CH2CO + H => CH3 + CO
+  type: elementary
+  rate-constant: {A: 1.9e-11, b: 0.0, Ea: 1725.0}
+  rxn: 272
+- equation: CH2CO + O => H2CO + CO
+  type: elementary
+  rate-constant: {A: 3.3e-11, b: 0.0, Ea: -0.0}
+  rxn: 273
+- equation: CH3 + CO + M => CH3CO + M
+  type: three-body
+  rate-constant: {A: 1.4e-32, b: 0, Ea: 3000}
+  rxn: 274
+- equation: CH3CO + H => CH4 + CO
+  type: elementary
+  rate-constant: {A: 1.0e-10, b: 0.0, Ea: -0.0}
+  rxn: 275
+- equation: CH3CO + O => H2CO + HCO
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 276
+- equation: CH3CO + CH3 => C2H6 + CO
+  type: elementary
+  rate-constant: {A: 5.4e-11, b: 0.0, Ea: -0.0}
+  rxn: 277
+- equation: CH3CO + CH3 => CH4 + CH2CO
+  type: elementary
+  rate-constant: {A: 8.6e-11, b: 0.0, Ea: -0.0}
+  rxn: 278
+- equation: CH23 + CH23 => C2H2 + H2
+  type: elementary
+  rate-constant: {A: 5.3e-11, b: 0.0, Ea: -0.0}
+  rxn: 279
+- equation: C2H2 + hv => C2H + H
+  type: photolysis
+  rxn: 280
+- equation: C2H2 + hv => C2 + H2
+  type: photolysis
+  rxn: 281
+- equation: C2H2 + OH => CO + CH3
+  type: elementary
+  rate-constant: {A: 2.0e-12, b: 0.0, Ea: 250.0}
+  rxn: 282
+- equation: C2H + O2 => CO + HCO
+  type: elementary
+  rate-constant: {A: 2.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 283
+- equation: C2H + O => CO + CH
+  type: elementary
+  rate-constant: {A: 1.0e-10, b: 0.0, Ea: 250.0}
+  rxn: 284
+- equation: C2H + H2 => C2H2 + H
+  type: elementary
+  rate-constant: {A: 5.58e-11, b: 0.0, Ea: 1443.0}
+  rxn: 285
+- equation: C2H + CH4 => C2H2 + CH3
+  type: elementary
+  rate-constant: {A: 6.94e-12, b: 0.0, Ea: 250.0}
+  rxn: 286
+- equation: C2H + H + M => C2H2 + M
+  type: falloff
+  low-P-rate-constant: {A: 1.26e-18, b: -3.1, Ea: 721}
+  high-P-rate-constant: {A: 3.0e-10, b: 0, Ea: 0}
+  rxn: 287
+- equation: C2 + H2 => C2H + H
+  type: elementary
+  rate-constant: {A: 1.77e-10, b: 0.0, Ea: 1469.0}
+  rxn: 288
+- equation: C2 + CH4 => C2H + CH3
+  type: elementary
+  rate-constant: {A: 5.05e-11, b: 0.0, Ea: 297.0}
+  rxn: 289
+- equation: C2 + S => C + CS
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 290
+- equation: C2 + S2 => CS + CS
+  type: elementary
+  rate-constant: {A: 1.5e-11, b: 0.0, Ea: 550.0}
+  rxn: 291
+- equation: C2 + O => C + CO
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 292
+- equation: C2 + O2 => CO + CO
+  type: elementary
+  rate-constant: {A: 1.5e-11, b: 0.0, Ea: 550.0}
+  rxn: 293
+- equation: C2H4 + hv => C2H2 + H2
+  type: photolysis
+  rxn: 294
+- equation: C2H4 + hv => C2H2 + H + H
+  type: photolysis
+  rxn: 295
+- equation: CH23 + CH3 => C2H4 + H
+  type: elementary
+  rate-constant: {A: 7.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 296
+- equation: CH23 + C2H3 => CH3 + C2H2
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 297
+- equation: C2H2 + H + M => C2H3 + M
+  type: falloff
+  low-P-rate-constant: {A: 2.6e-31, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 3.8e-11, b: 0, Ea: 1374}
+  rxn: 298
+- equation: C2H3 + H => C2H2 + H2
+  type: elementary
+  rate-constant: {A: 3.3e-11, b: 0.0, Ea: -0.0}
+  rxn: 299
+- equation: C2H3 + H2 => C2H4 + H
+  type: elementary
+  rate-constant: {A: 2.6e-13, b: 0.0, Ea: 2646.0}
+  rxn: 300
+- equation: C2H3 + CH4 => C2H4 + CH3
+  type: elementary
+  rate-constant: {A: 2.4e-24, b: 4.02, Ea: 2754}
+  rxn: 301
+- equation: C2H3 + C2H6 => C2H4 + C2H5
+  type: elementary
+  rate-constant: {A: 3.0e-13, b: 0.0, Ea: 5170.0}
+  rxn: 302
+- equation: C2H4 + OH => H2CO + CH3
+  type: elementary
+  rate-constant: {A: 2.2e-12, b: 0.0, Ea: -385.0}
+  rxn: 303
+- equation: C2H4 + O => HCO + CH3
+  type: elementary
+  rate-constant: {A: 5.5e-12, b: 0.0, Ea: 565.0}
+  rxn: 304
+- equation: C2H4 + H + M => C2H5 + M
+  type: falloff
+  low-P-rate-constant: {A: 2.15e-29, b: 0, Ea: 349}
+  high-P-rate-constant: {A: 4.95e-11, b: 0, Ea: 1051}
+  rxn: 305
+- equation: C2H + C2H6 => C2H2 + C2H5
+  type: elementary
+  rate-constant: {A: 3.6e-11, b: 0.0, Ea: -0.0}
+  rxn: 306
+- equation: CH + CH4 => C2H4 + H
+  type: elementary
+  rate-constant: {A: 2.5e-11, b: 0, Ea: -200}
+  rxn: 307
+  note: The above expression is only valid for T > 100 K. Here is the Atmos
+    code A270A = 2.5E-11 * EXP(200./T(I)) A270B = 1.7E-10 A(J,I) = AMIN1(A270A,A270B)
+- equation: CH23 + C2H5 => CH3 + C2H4
+  type: elementary
+  rate-constant: {A: 3.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 308
+- equation: C2H2 + O => CH23 + CO
+  type: elementary
+  rate-constant: {A: 2.9e-11, b: 0.0, Ea: 1600.0}
+  rxn: 309
+- equation: C2H3 + O => CH2CO + H
+  type: elementary
+  rate-constant: {A: 5.5e-11, b: 0.0, Ea: -0.0}
+  rxn: 310
+- equation: C2H3 + OH => C2H2 + H2O
+  type: elementary
+  rate-constant: {A: 8.3e-12, b: 0.0, Ea: -0.0}
+  rxn: 311
+- equation: C2H3 + CH3 => C2H2 + CH4
+  type: elementary
+  rate-constant: {A: 3.4e-11, b: 0.0, Ea: -0.0}
+  rxn: 312
+- equation: C2H3 + C2H3 => C2H4 + C2H2
+  type: elementary
+  rate-constant: {A: 2.4e-11, b: 0.0, Ea: -0.0}
+  rxn: 313
+- equation: C2H3 + C2H5 => C2H4 + C2H4
+  type: elementary
+  rate-constant: {A: 3.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 314
+- equation: C2H5 + CH3 => C2H4 + CH4
+  type: elementary
+  rate-constant: {A: 3.25e-11, b: -0.5, Ea: 0}
+  rxn: 315
+- equation: C2H5 + C2H3 => C2H6 + C2H2
+  type: elementary
+  rate-constant: {A: 6.0e-12, b: 0.0, Ea: -0.0}
+  rxn: 316
+- equation: C2H5 + C2H5 => C2H6 + C2H4
+  type: elementary
+  rate-constant: {A: 2.3e-12, b: 0.0, Ea: -0.0}
+  rxn: 317
+- equation: C2H2 + OH + M => C2H2OH + M
+  type: falloff
+  low-P-rate-constant: {A: 5.5e-30, b: -0.0, Ea: 0.0}
+  high-P-rate-constant: {A: 7.47e-08, b: -2.0, Ea: 0.0}
+  JPL: true
+  rxn: 318
+- equation: C2H2 + OH + M => CH2CO + H + M
+  type: falloff
+  low-P-rate-constant: {A: 5.8e-31, b: 0, Ea: -1258}
+  high-P-rate-constant: {A: 1.4e-12, b: 0, Ea: -388}
+  rxn: 319
+- equation: C2H2OH + H => H2O + C2H2
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 320
+- equation: C2H2OH + H => H2 + CH2CO
+  type: elementary
+  rate-constant: {A: 3.3e-11, b: 0.0, Ea: 2000.0}
+  rxn: 321
+- equation: C2H2OH + O => OH + CH2CO
+  type: elementary
+  rate-constant: {A: 3.3e-11, b: 0.0, Ea: 2000.0}
+  rxn: 322
+- equation: C2H2OH + OH => H2O + CH2CO
+  type: elementary
+  rate-constant: {A: 1.7e-11, b: 0.0, Ea: 1000.0}
+  rxn: 323
+- equation: C2H4 + OH + M => C2H4OH + M
+  type: falloff
+  low-P-rate-constant: {A: 9.587315155141829e-27, b: -0.8, Ea: 0.0}
+  high-P-rate-constant: {A: 8.8e-12, b: -0.0, Ea: 0.0}
+  JPL: true
+  rxn: 324
+- equation: C2H4OH + H => H2O + C2H4
+  type: elementary
+  rate-constant: {A: 5.0e-11, b: 0.0, Ea: -0.0}
+  rxn: 325
+- equation: C2H4OH + H => H2 + CH3CHO
+  type: elementary
+  rate-constant: {A: 3.3e-11, b: 0.0, Ea: 2000.0}
+  rxn: 326
+- equation: C2H4OH + O => OH + CH3CHO
+  type: elementary
+  rate-constant: {A: 3.3e-11, b: 0.0, Ea: 2000.0}
+  rxn: 327
+- equation: C2H4OH + OH => H2O + CH3CHO
+  type: elementary
+  rate-constant: {A: 1.7e-11, b: 0.0, Ea: 1000.0}
+  rxn: 328
+- equation: CH3CHO + H => CH3CO + H2
+  type: elementary
+  rate-constant: {A: 2.8e-11, b: 0.0, Ea: 1540.0}
+  rxn: 329
+- equation: CH3CHO + O => CH3CO + OH
+  type: elementary
+  rate-constant: {A: 5.8e-13, b: 0.0, Ea: -0.0}
+  rxn: 330
+- equation: CH3CHO + OH => CH3CO + H2O
+  type: elementary
+  rate-constant: {A: 1.6e-11, b: 0.0, Ea: -0.0}
+  rxn: 331
+- equation: CH3CHO + CH3 => CH3CO + CH4
+  type: elementary
+  rate-constant: {A: 2.8e-11, b: 0.0, Ea: 1540.0}
+  rxn: 332
+- equation: CH3CHO + hv => CH3 + HCO
+  type: photolysis
+  rxn: 333
+- equation: CH3CHO + hv => CH4 + CO
+  type: photolysis
+  rxn: 334
+- equation: C2H5 + CH3 + M => C3H8 + M
+  type: falloff
+  low-P-rate-constant: {A: 2.519e-16, b: -2.458, Ea: 0}
+  high-P-rate-constant: {A: 8.12e-10, b: -0.5, Ea: 0}
+  rxn: 335
+- equation: C3H8 + OH => C3H7 + H2O
+  type: elementary
+  rate-constant: {A: 1.1e-11, b: 0.0, Ea: 700.0}
+  rxn: 336
+- equation: C3H8 + O => C3H7 + OH
+  type: elementary
+  rate-constant: {A: 2.2e-11, b: 0, Ea: 2200}
+  duplicate: true
+  rxn: 337
+- equation: C3H8 + O => C3H7 + OH
+  type: elementary
+  rate-constant: {A: 1.6e-11, b: 0, Ea: 2900}
+  duplicate: true
+  rxn: 337
+- equation: C3H8 + O1D => C3H7 + OH
+  type: elementary
+  rate-constant: {A: 1.4e-10, b: 0.0, Ea: -0.0}
+  rxn: 338
+- equation: C3H7 + H => CH3 + C2H5
+  type: elementary
+  rate-constant: {A: 7.95e-11, b: 0.0, Ea: 127.0}
+  rxn: 339
+- equation: C3H8 + hv => C3H6 + H2
+  type: photolysis
+  rxn: 340
+- equation: C3H8 + hv => C2H6 + 1CH2
+  type: photolysis
+  rxn: 341
+- equation: C3H8 + hv => C2H4 + CH4
+  type: photolysis
+  rxn: 342
+- equation: C3H8 + hv => C2H5 + CH3
+  type: photolysis
+  rxn: 343
+- equation: C2H + C3H8 => C2H2 + C3H7
+  type: elementary
+  rate-constant: {A: 1.4e-11, b: 0.0, Ea: -0.0}
+  rxn: 344
+- equation: C3H6 + hv => C2H2 + CH3 + H
+  type: photolysis
+  rxn: 345
+- equation: C3H6 + hv => CH2CCH2 + H2
+  type: photolysis
+  rxn: 346
+- equation: C3H6 + hv => C2H4 + CH23
+  type: photolysis
+  rxn: 347
+- equation: C3H6 + hv => C2H + CH4 + H
+  type: photolysis
+  rxn: 348
+- equation: C2H5CHO + hv => C2H5 + HCO
+  type: photolysis
+  rxn: 349
+- equation: C2H3 + CH3 + M => C3H6 + M
+  type: falloff
+  low-P-rate-constant: {A: 1.3e-22, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 1.2e-10, b: 0, Ea: 0}
+  rxn: 350
+- equation: C3H6 + OH => CH3CHO + CH3
+  type: elementary
+  rate-constant: {A: 4.1e-12, b: 0.0, Ea: -540.0}
+  rxn: 351
+- equation: C3H6 + O => CH3 + CH3 + CO
+  type: elementary
+  rate-constant: {A: 4.1e-12, b: 0.0, Ea: 38.0}
+  rxn: 352
+- equation: C3H6 + H + M => C3H7 + M
+  type: falloff
+  low-P-rate-constant: {A: 2.15e-29, b: 0, Ea: 349}
+  high-P-rate-constant: {A: 4.95e-11, b: 0, Ea: 1051}
+  rxn: 353
+- equation: C3H7 + CH3 => C3H6 + CH4
+  type: elementary
+  rate-constant: {A: 2.5e-12, b: 0.0, Ea: 200.0}
+  rxn: 354
+- equation: C3H7 + OH => C2H5CHO + H2
+  type: elementary
+  rate-constant: {A: 1.1e-10, b: 0.0, Ea: -0.0}
+  rxn: 355
+- equation: C3H7 + O => C2H5CHO + H
+  type: elementary
+  rate-constant: {A: 1.1e-10, b: 0.0, Ea: -0.0}
+  rxn: 356
+- equation: CH + C2H4 => CH2CCH2 + H
+  type: elementary
+  rate-constant: {A: 5.5e-11, b: 0, Ea: -173}
+  rxn: 357
+  note: The above expression is only valid for T > 100 K. Here is the Atmos
+    code A272A = 5.5E-11 * EXP(173./T(I)) A272B = 3.55E-10 A(J,I) = AMIN1(A272A,A272B)
+- equation: CH + C2H4 => CH3C2H + H
+  type: elementary
+  rate-constant: {A: 5.5e-11, b: 0, Ea: -173}
+  rxn: 358
+  note: The above expression is only valid for T > 100 K. Here is the Atmos
+    code A272A = 5.5E-11 * EXP(173./T(I)) A272B = 3.55E-10 A(J,I) = AMIN1(A272A,A272B)
+- equation: CH2CCH2 + H + M => CH3 + C2H2 + M
+  type: falloff
+  low-P-rate-constant: {A: 8.0e-24, b: -2, Ea: 1225}
+  high-P-rate-constant: {A: 9.7e-13, b: 0, Ea: 1550}
+  rxn: 359
+- equation: CH2CCH2 + H + M => C3H5 + M
+  type: falloff
+  low-P-rate-constant: {A: 8.0e-24, b: -2, Ea: 1225}
+  high-P-rate-constant: {A: 1.4e-11, b: 0, Ea: 1000}
+  rxn: 360
+- equation: CH3 + C2H3 => C3H5 + H
+  type: elementary
+  rate-constant: {A: 2.4e-13, b: 0.0, Ea: -0.0}
+  rxn: 361
+- equation: C2H3 + C2H5 + M => CH3 + C3H5 + M
+  type: falloff
+  low-P-rate-constant: {A: 1.9e-27, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 2.5e-11, b: 0, Ea: 0}
+  rxn: 362
+- equation: C3H5 + H + M => C3H6 + M
+  type: falloff
+  low-P-rate-constant: {A: 1.0e-28, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 1.0e-11, b: 0, Ea: 0}
+  rxn: 363
+- equation: C3H5 + H => CH4 + C2H2
+  type: elementary
+  rate-constant: {A: 1.5e-11, b: 0.0, Ea: -0.0}
+  rxn: 364
+- equation: C3H5 + CH3 => CH2CCH2 + CH4
+  type: elementary
+  rate-constant: {A: 4.5e-12, b: 0.0, Ea: -0.0}
+  rxn: 365
+- equation: C3H5 + H => CH2CCH2 + H2
+  type: elementary
+  rate-constant: {A: 1.5e-11, b: 0.0, Ea: -0.0}
+  rxn: 366
+- equation: CH + C2H2 => C3H2 + H
+  type: elementary
+  rate-constant: {A: 1.75e-10, b: 0, Ea: -61}
+  rxn: 367
+  note: The above expression is only valid for T > 50 K. Here is the Atmos
+    code A271A = 1.75E-10 * EXP(61./T(I)) A271B = 5.3E-10 A(J,I) = AMIN1(A271A,A271B)
+- equation: CH23 + C2H2 + M => CH3C2H + M
+  type: falloff
+  low-P-rate-constant: {A: 3.8e-25, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 2.2e-12, b: 0, Ea: 0}
+  rxn: 368
+- equation: CH3C2H + H + M => CH3 + C2H2 + M
+  type: falloff
+  low-P-rate-constant: {A: 8.0e-24, b: -2, Ea: 1225}
+  high-P-rate-constant: {A: 9.7e-12, b: 0, Ea: 1550}
+  rxn: 369
+- equation: CH3C2H + H + M => C3H5 + M
+  type: falloff
+  low-P-rate-constant: {A: 8.0e-24, b: -2, Ea: 1225}
+  high-P-rate-constant: {A: 9.7e-12, b: 0, Ea: 1550}
+  rxn: 370
+- equation: C3H2 + H + M => C3H3 + M
+  type: falloff
+  low-P-rate-constant: {A: 1.7e-26, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 1.5e-10, b: 0, Ea: 0}
+  rxn: 371
+- equation: C3H3 + H + M => CH3C2H + M
+  type: falloff
+  low-P-rate-constant: {A: 1.7e-26, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 1.5e-10, b: 0, Ea: 0}
+  rxn: 372
+- equation: C3H3 + H + M => CH2CCH2 + M
+  type: falloff
+  low-P-rate-constant: {A: 1.7e-26, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 1.5e-10, b: 0, Ea: 0}
+  rxn: 373
+- equation: C3H5 + H => CH3C2H + H2
+  type: elementary
+  rate-constant: {A: 1.5e-11, b: 0.0, Ea: -0.0}
+  rxn: 374
+- equation: C3H5 + CH3 => CH3C2H + CH4
+  type: elementary
+  rate-constant: {A: 4.5e-12, b: 0.0, Ea: -0.0}
+  rxn: 375
+- equation: CH2CCH2 + H => CH3C2H + H
+  type: elementary
+  rate-constant: {A: 1.0e-11, b: 0.0, Ea: 1000.0}
+  rxn: 376
+- equation: CH23 + C2H2 + M => CH2CCH2 + M
+  type: falloff
+  low-P-rate-constant: {A: 3.8e-25, b: 0, Ea: 0}
+  high-P-rate-constant: {A: 3.7e-12, b: 0, Ea: 0}
+  rxn: 377
+- equation: C3H3 + hv => C3H2 + H
+  type: photolysis
+  rxn: 378
+- equation: CH3C2H + hv => C3H3 + H
+  type: photolysis
+  rxn: 379
+- equation: CH3C2H + hv => C3H2 + H2
+  type: photolysis
+  rxn: 380
+- equation: CH3C2H + hv => CH3 + C2H
+  type: photolysis
+  rxn: 381
+- equation: CH2CCH2 + hv => C3H3 + H
+  type: photolysis
+  rxn: 382
+- equation: CH2CCH2 + hv => C3H2 + H2
+  type: photolysis
+  rxn: 383
+- equation: CH2CCH2 + hv => C2H2 + CH23
+  type: photolysis
+  rxn: 384
+- equation: C2H6 + hv => CH23 + CH23 + H2
+  type: photolysis
+  rxn: 385
+- equation: C2H6 + hv => CH4 + 1CH2
+  type: photolysis
+  rxn: 386
+- equation: C2H6 + hv => C2H2 + H2 + H2
+  type: photolysis
+  rxn: 387
+- equation: C2H6 + hv => C2H4 + H + H
+  type: photolysis
+  rxn: 388
+- equation: C2H6 + hv => C2H4 + H2
+  type: photolysis
+  rxn: 389
+- equation: C2H6 + hv => CH3 + CH3
+  type: photolysis
+  rxn: 390

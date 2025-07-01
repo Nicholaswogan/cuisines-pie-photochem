@@ -1,0 +1,66 @@
+O2        HV        O         O1D                                             
+O2        HV        O         O                                               
+H2O       HV        H         OH                
+O3        HV        O2        O1D               
+O3        HV        O2        O                                               
+H2O2      HV        OH        OH                
+CO2       HV        CO        O                 
+CO2       HV        CO        O1D                                              
+H2CO      HV        H2        CO                                               
+H2CO      HV        HCO       H                                                
+HCO       HV        H         CO       
+HO2       HV        OH        O                 
+HNO2      HV        NO        OH          
+HNO3      HV        NO2       OH                
+NO        HV        N         O                 
+NO2       HV        NO        O        
+HNO       HV        NO        H    
+SO        HV        S         O                 
+H2S       HV        HS        H                 
+SO2       HV        SO        O       
+SO2       HV        SO21          
+SO2       HV        SO23          
+S2        HV        S         S                 
+S4        HV        S2        S2       
+S3        HV        S2        S       
+SO3       HV        SO2       O                 
+SO21      HV        SO23                     
+SO21      HV        SO2                     
+SO21      HV        SO23      HV                
+SO21      HV        SO2       HV               
+SO23      HV        SO2                        
+SO23      HV        SO2       HV             
+HSO       HV        HS        O              
+OCS       HV        CO        S                 
+CS2       HV        CS        S                 
+CS2       HV        CS2X                             
+CH4       HV        CH21      H2            
+CH4       HV        CH23      H         H       
+CH        HV        C         H                 
+CH2CO     HV        CH23      CO                
+C2H2      HV        C2H       H                 
+C2H2      HV        C2        H2                
+C2H4      HV        C2H2      H2                        
+CH3CHO    HV        CH4       CO                
+C3H8      HV        C3H6      H2                
+C3H8      HV        C2H6      CH21              
+C3H8      HV        C2H4      CH4               
+C3H8      HV        C2H5      CH3               
+C3H6      HV        C2H2      CH3         
+C3H6      HV        CH2CCH2   H2                
+C3H6      HV        C2H4      CH23              
+C3H6      HV        C2H       CH4       
+C2H5CHO   HV        C2H5      HCO               
+C3H3      HV        C3H2      H                 
+CH3C2H    HV        C3H3      H                 
+CH3C2H    HV        C3H2      H2                
+CH3C2H    HV        CH3       C2H               
+CH2CCH2   HV        C3H3      H                 
+CH2CCH2   HV        C3H2      H2                
+CH2CCH2   HV        C2H2      CH23              
+C2H6      HV        CH23      CH23      
+C2H6      HV        CH4       CH21       
+C2H6      HV        C2H2      H2        H2     
+C2H6      HV        C2H4      H         H       
+C2H6      HV        C2H4      H2                
+C2H6      HV        CH3       CH3                

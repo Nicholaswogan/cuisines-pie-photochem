@@ -2,6 +2,8 @@ import numpy as np
 from photochem.clima import AdiabatClimate
 import utils
 import numba as nb
+import os
+import shutil
 
 def test0_initialize(pc):
     "Initializes photochemical model to reasonable z-T-Kzz profile."
@@ -335,15 +337,52 @@ def test3e(savefile=False, use_atmosphere_file=True):
         pc.out2atmosphere_txt('slices/ArcheanEarth/test3/test3e/atmosphere.txt', overwrite=True)
         utils.pie_output_file(pc,'slices/ArcheanEarth/test3/test3e/Photochem_test3e.txt')
 
+def test4a(savefile=False, use_atmosphere_file=True):
+
+    atmosphere_file = 'slices/ArcheanEarth/test3/test3a/atmosphere.txt'
+    if use_atmosphere_file:
+        atmosphere_file = 'slices/ArcheanEarth/test4/test4a/atmosphere.txt'
+    pc = utils.EvoAtmosphereRobust(
+        'slices/ArcheanEarth/test4/ArcheanHaze_PhotochemPhotolysis.yaml',
+        'slices/ArcheanEarth/test3/settings.yaml',
+        'slices/ArcheanEarth/test2/Sun_3.8Ga_energyunits_edited.txt',
+        atmosphere_file
+    )
+    pc.set_particle_parameters(1, 1000, 10)
+
+    assert pc.find_steady_state()
+
+    if savefile:
+        pc.out2atmosphere_txt('slices/ArcheanEarth/test4/test4a/atmosphere.txt', overwrite=True)
+        utils.pie_output_file(pc,'slices/ArcheanEarth/test4/test4a/Photochem_test4a.txt')
+
+def find_files_with_string_in_name(root_dir, search_string):
+    found_files = []
+    for root, _, files in os.walk(root_dir):
+        for file in files:
+            if search_string in file:
+                found_files.append(os.path.join(root, file))
+    return found_files
+
+def collect_results():
+    results = find_files_with_string_in_name('slices/ArcheanEarth/', 'Photochem_')
+    for result in results:
+        new_name =  os.path.join('slices/ArcheanEarth_results',os.path.basename(result))
+        shutil.copyfile(result, new_name)
+
 if __name__ == "__main__":
-    savefile = False
+    savefile = True
     use_atmosphere_file = True
-    test1a(savefile, use_atmosphere_file)
-    test1d_180K(savefile, use_atmosphere_file)
-    test1d_288K(savefile, use_atmosphere_file)
-    test2(savefile, use_atmosphere_file)
-    test3a(savefile, use_atmosphere_file)
-    test3b(savefile, use_atmosphere_file)
-    test3c(savefile, use_atmosphere_file)
-    test3d(savefile, use_atmosphere_file)
-    test3e(savefile, use_atmosphere_file)
+    # test1a(savefile, use_atmosphere_file)
+    # test1d_180K(savefile, use_atmosphere_file)
+    # test1d_288K(savefile, use_atmosphere_file)
+    # test2(savefile, use_atmosphere_file)
+    # test3a(savefile, use_atmosphere_file)
+    # test3b(savefile, use_atmosphere_file)
+    # test3c(savefile, use_atmosphere_file)
+    # test3d(savefile, use_atmosphere_file)
+    # test3e(savefile, use_atmosphere_file)
+    # test4a(savefile, use_atmosphere_file)
+
+    collect_results()
+
